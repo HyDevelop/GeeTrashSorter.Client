@@ -1,5 +1,7 @@
 {
   "name": "TrashSorter-Ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
