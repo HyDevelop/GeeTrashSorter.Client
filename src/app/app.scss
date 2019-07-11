@@ -6,7 +6,7 @@
 // and used throughout the application.
 
 
-// Title centered for all platforms
+// Center title for all platforms
 // 标题居中
 ion-title
 {
@@ -25,4 +25,11 @@ ion-title.subtitle
 {
     height: 150%;
     font-size: xx-small;
+}
+
+// Center search bar text
+// 搜索栏文字居中
+ion-searchbar
+{
+    text-align: center;
 }
