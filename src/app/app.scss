@@ -6,6 +6,8 @@
 // and used throughout the application.
 
 
+// Title centered for all platforms
+// 标题居中
 ion-title
 {
     position: absolute;
@@ -17,6 +19,8 @@ ion-title
     text-align: center;
 }
 
+// Subtitle
+// 副标题
 ion-title.subtitle
 {
     height: 150%;
