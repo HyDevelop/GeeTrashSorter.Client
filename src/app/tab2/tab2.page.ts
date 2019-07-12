@@ -19,7 +19,7 @@ export class Tab2Page
      * Displaying item array for ngFor
      * 用 ngFor 显示的数组
      */
-    private itemListArray;
+    private syncedItemListArray;
 
     /**
      * User input text for search (Live updating)
@@ -41,7 +41,7 @@ export class Tab2Page
 
             // Assign result to the displaying array of ngFor
             // 赋值给 ngFor 显示的数组
-            this.itemListArray = value;
+            this.syncedItemListArray = value;
         });
     }
 
