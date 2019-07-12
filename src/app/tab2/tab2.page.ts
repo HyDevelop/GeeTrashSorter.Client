@@ -75,4 +75,16 @@ export class Tab2Page
             });
         }
     }
+
+    /**
+     * This method is executed when user searches.
+     * 用户搜索事件
+     *
+     * @param event Search event
+     */
+    onSearch(event)
+    {
+        console.log(event);
+        console.log(this.search.text());
+    }
 }
