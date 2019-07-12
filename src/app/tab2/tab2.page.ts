@@ -92,7 +92,7 @@ export class Tab2Page
 
         // Obtain displaying entries
         // 获取显示的列表
-        let items = Array.from(document.querySelector('ion-list').children);
+        let items = Array.from(document.querySelector('ion-list').children as HTMLCollectionOf<HTMLElement>);
 
         // Update relevant history item list
         // 更新历史记录列表
@@ -100,17 +100,13 @@ export class Tab2Page
         {
             items.forEach(item =>
             {
-                // Cast
-                // 转换类型
-                let htmlElement: HTMLElement = <HTMLElement> item;
-
                 // Check if contains the user input
                 // 验证是否包含用户输入
                 let shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
 
                 // Update list
                 // 更新列表
-                htmlElement.style.display = shouldShow ? 'block' : 'none';
+                item.style.display = shouldShow ? 'block' : 'none';
             });
         });
     }
