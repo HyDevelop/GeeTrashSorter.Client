@@ -15,7 +15,13 @@ export class Tab2Page
      * Displaying item array for ngFor
      * 用 ngFor 显示的数组
      */
-    public itemListArray = ['12', '3'];
+    public itemListArray;
+
+    /**
+     * User input text for search (Live updating)
+     * 用户搜索输入 (动态更新)
+     */
+    private syncedSearchText: any;
 
     constructor(private storage: Storage)
     {
