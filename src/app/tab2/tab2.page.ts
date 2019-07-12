@@ -35,6 +35,9 @@ export class Tab2Page
 
     constructor(private storage: Storage)
     {
+        // TODO: Remove debug array.
+        storage.set("history", ["芒果干", "苹果", "垃圾袋", "纸巾"]);
+
         console.log("Tab2Page.constructor()");
 
         // Obtain search history
