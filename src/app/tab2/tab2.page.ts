@@ -87,4 +87,15 @@ export class Tab2Page
         console.log(event);
         console.log(this.search.text());
     }
+
+    /**
+     * This method is executed when user types
+     * 用户输入事件
+     *
+     * @param $event
+     */
+    onSearchBarInput($event: CustomEvent<any>)
+    {
+
+    }
 }

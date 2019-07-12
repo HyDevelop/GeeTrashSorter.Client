@@ -10,6 +10,7 @@
     <ion-toolbar>
         <ion-searchbar [(ngModel)]="syncedSearchText"
                        (search)="onSearchBarEnter($event)"
+                       (ionInput)="onSearchBarInput($event)"
                        id="hy-search-bar"
                        placeholder="垃圾物品名 或者 垃圾部件名"
                        autocomplete="on">
