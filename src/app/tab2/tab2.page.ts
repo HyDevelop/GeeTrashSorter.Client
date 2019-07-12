@@ -77,10 +77,38 @@ export class Tab2Page
      * This method is executed when user types
      * 用户输入事件
      *
-     * @param $event
+     * @param event Input event
      */
-    onSearchBarInput($event: CustomEvent<any>)
+    onSearchBarInput(event)
     {
+        console.log("HandleInput");
 
+        // Obtain input text
+        // 获取输入内容
+        let query = event.target.value.toLowerCase();
+
+        // Obtain displaying entries
+        // 获取显示的列表
+        let items = Array.from(document.querySelector('ion-list').children);
+
+        // Update relevant history item list
+        // 更新历史记录列表
+        requestAnimationFrame(() =>
+        {
+            items.forEach(item =>
+            {
+                // Cast
+                // 转换类型
+                let htmlElement: HTMLElement = <HTMLElement> item;
+
+                // Check if contains the user input
+                // 验证是否包含用户输入
+                let shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+
+                // Update list
+                // 更新列表
+                htmlElement.style.display = shouldShow ? 'block' : 'none';
+            });
+        });
     }
 }
