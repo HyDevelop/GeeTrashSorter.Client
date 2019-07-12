@@ -9,8 +9,7 @@ import {Storage} from '@ionic/storage';
 
 export class Tab2Page
 {
-    private search = document.querySelector('#hy-search-bar');
-    private itemList = document.querySelector('#hy-item-list');
+    private search;
 
     /**
      * Displaying item array for ngFor
@@ -37,17 +36,25 @@ export class Tab2Page
             // Assign result to the displaying array of ngFor
             // 赋值给 ngFor 显示的数组
             this.itemListArray = value;
-        })
+        });
     }
 
-    refresh()
+    /**
+     * This method is called when the html finishes loading.
+     * HTML 加载完成事件
+     */
+    onLoad()
     {
-        console.log("Refresh()");
+        this.search = document.querySelector('#hy-search-bar');
 
+        // Add input listener to search bar
+        // 给搜索栏添加输入监听器
         this.search.addEventListener('ionInput', handleInput);
 
         function handleInput(event)
         {
+            console.log("HandleInput");
+
             const query = event.target.value.toLowerCase();
             requestAnimationFrame(() =>
             {
