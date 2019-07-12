@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Storage} from '@ionic/storage';
+import {RequestOptionsArgs} from '@angular/http';
+
 // API Base URL
 // API 基础链接 TODO: 添加北京
 const BASE_URL = "http://trash.hydev.org/shanghai?name=";
@@ -18,7 +20,6 @@ const STORAGE_HISTORY = "history";
     templateUrl: 'tab2.page.html',
     styleUrls: ['tab2.page.scss']
 })
-
 export class Tab2Page
 {
     /**
@@ -48,17 +49,17 @@ export class Tab2Page
     constructor(private storage: Storage)
     {
         // TODO: Remove debug array.
-        storage.set("history", ["芒果干", "苹果", "垃圾袋", "纸巾"]);
+        storage.set(STORAGE_HISTORY, ["芒果干", "苹果", "垃圾袋", "纸巾"]);
 
         console.log("Tab2Page.constructor()");
 
         // Obtain search history
         // 获取搜索历史
-        storage.get("history").then(value =>
+        storage.get(STORAGE_HISTORY).then(value =>
         {
             // Initialize value if not alread
             // 初始化数值
-            if (value == null) storage.set("history", value = []);
+            if (value == null) storage.set(STORAGE_HISTORY, value = []);
 
             // Assign result to the displaying array of ngFor
             // 赋值给 ngFor 显示的数组
