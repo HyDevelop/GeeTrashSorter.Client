@@ -7,11 +7,17 @@
             GeeTrashSorter
         </ion-title>
     </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar id="hy-search-bar" placeholder="垃圾物品名 或者 垃圾部件名" autocomplete="on">
+
+        </ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-searchbar placeholder="垃圾物品名 或者 垃圾部件名"
-            autocomplete="on">
-
-    </ion-searchbar>
+    <ion-list id="hy-item-list">
+        <ion-item *ngFor="let term of itemListArray;">
+            <p>{{term}}</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
