@@ -8,6 +8,10 @@ const BASE_URL = "http://trash.hydev.org/shanghai?name=";
 // 跨站脚本代理 TODO: 写自己的代理
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
+// Storage key constant
+// 数据库键名
+const STORAGE_HISTORY = "history";
+
 
 @Component({
     selector: 'app-tab2',
