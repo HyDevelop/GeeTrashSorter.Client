@@ -16,6 +16,12 @@ export class Tab2Page
     private elementSearch;
 
     /**
+     * Search history item list element
+     * 历史记录列表
+     */
+    private elementItemList;
+
+    /**
      * Displaying item array for ngFor
      * 用 ngFor 显示的数组
      */
@@ -52,6 +58,7 @@ export class Tab2Page
     ionViewDidEnter()
     {
         this.elementSearch = document.querySelector('#hy-search-bar');
+        this.elementItemList = document.querySelector('#hy-item-list');
     }
 
     /**
