@@ -13,7 +13,7 @@ export class Tab2Page
      * Search bar element
      * 搜索框
      */
-    private search;
+    private elementSearch;
 
     /**
      * Displaying item array for ngFor
@@ -85,7 +85,7 @@ export class Tab2Page
     onSearchBarEnter(event)
     {
         console.log(event);
-        console.log(this.search.text());
+        console.log(this.elementSearch.text());
     }
 
     /**
