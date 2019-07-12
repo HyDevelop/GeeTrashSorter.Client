@@ -7,9 +7,17 @@ import {Component} from '@angular/core';
 })
 export class TabsPage
 {
-
     constructor()
     {
     }
 
+    /**
+     * Called when a tab icon is clicked.
+     *
+     * @param $event The tab change event.
+     */
+    tabChanged($event: {tab: string })
+    {
+
+    }
 }
