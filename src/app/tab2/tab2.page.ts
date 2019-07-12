@@ -82,7 +82,7 @@ export class Tab2Page
      *
      * @param event Search event
      */
-    onSearch(event)
+    onSearchBarEnter(event)
     {
         console.log(event);
         console.log(this.search.text());
