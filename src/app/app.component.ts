@@ -8,6 +8,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
     selector: 'app-root',
     templateUrl: 'app.component.html'
 })
+
 export class AppComponent
 {
     constructor(
@@ -24,6 +25,14 @@ export class AppComponent
         this.platform.ready().then(() =>
         {
             this.statusBar.styleDefault();
+
+            // Fix black status bar
+            if(this.platform.is('android'))
+            {
+                // set status bar to white
+                this.statusBar.backgroundColorByHexString('#ffe5e6');
+            }
+
             this.splashScreen.hide();
         });
     }
