@@ -43,8 +43,10 @@ export class Tab2Page
      * This method is called when the html finishes loading.
      * HTML 加载完成事件
      */
-    onLoad()
+    ionViewDidEnter()
     {
+        console.log("ionViewDidEnter()");
+
         this.search = document.querySelector('#hy-search-bar');
 
         // Add input listener to search bar
