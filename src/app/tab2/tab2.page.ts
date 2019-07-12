@@ -51,29 +51,7 @@ export class Tab2Page
      */
     ionViewDidEnter()
     {
-        console.log("ionViewDidEnter()");
-
-        this.search = document.querySelector('#hy-search-bar');
-
-        // Add input listener to search bar
-        // 给搜索栏添加输入监听器
-        this.search.addEventListener('ionInput', handleInput);
-
-        function handleInput(event)
-        {
-            console.log("HandleInput");
-
-            const query = event.target.value.toLowerCase();
-            requestAnimationFrame(() =>
-            {
-                /*
-                items.forEach(item =>
-                {
-                    const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
-                    item.style.display = shouldShow ? 'block' : 'none';
-                });*/
-            });
-        }
+        this.elementSearch = document.querySelector('#hy-search-bar');
     }
 
     /**
