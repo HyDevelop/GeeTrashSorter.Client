@@ -9,13 +9,17 @@ import {Storage} from '@ionic/storage';
 
 export class Tab2Page
 {
+    /**
+     * Search bar element
+     * 搜索框
+     */
     private search;
 
     /**
      * Displaying item array for ngFor
      * 用 ngFor 显示的数组
      */
-    public itemListArray;
+    private itemListArray;
 
     /**
      * User input text for search (Live updating)
@@ -33,11 +37,7 @@ export class Tab2Page
         {
             // Initialize value if not alread
             // 初始化数值
-            if (value == null)
-            {
-                value = [];
-                storage.set("history", value);
-            }
+            if (value == null) storage.set("history", value = []);
 
             // Assign result to the displaying array of ngFor
             // 赋值给 ngFor 显示的数组
