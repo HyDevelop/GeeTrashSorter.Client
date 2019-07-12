@@ -86,7 +86,37 @@ export class Tab2Page
     onSearchBarEnter(event)
     {
         console.log(event);
-        console.log(this.elementSearch.text());
+
+        // Obtain input text
+        // 获取输入内容
+        let query = event.target.value.toLowerCase();
+
+        // Send a GET request
+        // 发送 GET 请求
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function()
+        {
+            if (request.readyState == 4 && request.status == 200)
+            {
+                console.log(request.responseText);
+
+
+            }
+        };
+        console.log(CORS_PROXY + BASE_URL + query);
+        request.open("GET", CORS_PROXY + BASE_URL + query, true); // true for asynchronous
+        request.send(null);
+    }
+
+    /**
+     * Record query to storage
+     * 记录查询到数据库
+     *
+     * @param text Query text
+     */
+    recordQuery(text: String)
+    {
+
     }
 
     /**
