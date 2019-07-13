@@ -193,6 +193,10 @@ export class Tab2Page
         let loading = Tab2Page.toElement(CARD_LOADING.replace('%{subtitle}', text));
         target.parentNode.insertBefore(loading, target.nextSibling);
 
+        // Keep instance
+        // 保留实例
+        let instance = this;
+
         // Send a GET request
         // 发送 GET 请求
         let request = new XMLHttpRequest();
@@ -204,7 +208,7 @@ export class Tab2Page
             {
                 // Obtain element
                 // 获取对象
-                let element = Tab2Page.processHttpResponse(text, request);
+                let element = instance.processHttpResponse(text, request);
 
                 // Remove loading from html view
                 // 移除加载卡片
@@ -232,25 +236,25 @@ export class Tab2Page
         // Some HTTP error code
         // HTTP 错误码
         if (request.status != 200)
-            return Tab2Page.createCard(query, '发生错误', '网络连接异常', null, 'hy-card-error');
+            return this.createCard(query, '发生错误', '网络连接异常', null, 'hy-card-error');
 
         // No data
         // 没有数据
         if (request.responseText.toLowerCase().includes('error: no data'))
-            return Tab2Page.createCard(query, '发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
+            return this.createCard(query, '发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
 
         // Other errors
         // 其他错误 TODO: 自动重试
         if (request.responseText.includes('Error'))
         {
             console.log(request.responseText);
-            return Tab2Page.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
+            return this.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
         }
 
         // Request success
         // 请求正常
         let response = JSON.parse(request.responseText);
-        return Tab2Page.createCard(query, response.name, response.type, response.steps, 'hy-card-success');
+        return this.createCard(query, response.name, response.type, response.steps, 'hy-card-success');
     }
 
     /**
@@ -266,7 +270,7 @@ export class Tab2Page
      */
     private createCard(query: string, subtitle: string, title: string, content?: string, _class?: string)
     {
-        let node = this.toElement(CARD_TEMPLATE
+        let node = Tab2Page.toElement(CARD_TEMPLATE
             .replace('%{query}', query)
             .replace('%{subtitle}', subtitle)
             .replace('%{title}', title)
@@ -276,7 +280,7 @@ export class Tab2Page
 
         // Add listener
         // 注册监听
-        node.addEventListener('click', (event) => Tab2Page.onCardClick(event));
+        node.addEventListener('click', (event) => this.onCardClick(event));
 
         return node;
     }
