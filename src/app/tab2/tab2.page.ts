@@ -352,46 +352,27 @@ export class Tab2Page
         // 生成点击卡片的动作列表
         const actionSheet = await this.actionSheetController.create(
         {
-            header: 'Albums',
+            header: '操作',
             buttons: [
-            {
-                text: 'Delete',
-                role: 'destructive',
-                icon: 'trash',
-                handler: () =>
                 {
-
-
-                    // Remove node
-                    // 移除
-                    cardNode.remove();
-                }
-            }, {
-                text: 'Share',
-                icon: 'share',
-                handler: () => {
-                    console.log('Share clicked');
-                }
-            }, {
-                text: 'Play (open modal)',
-                icon: 'arrow-dropright-circle',
-                handler: () => {
-                    console.log('Play clicked');
-                }
-            }, {
-                text: 'Favorite',
-                icon: 'heart',
-                handler: () => {
-                    console.log('Favorite clicked');
-                }
-            }, {
-                text: 'Cancel',
-                icon: 'close',
-                role: 'cancel',
-                handler: () => {
-                    console.log('Cancel clicked');
-                }
-            }]
+                    text: '关闭卡片',
+                    role: 'destructive',
+                    icon: 'trash',
+                    handler: () => cardNode.remove()
+                },
+                {
+                    text: '复制卡片信息',
+                    icon: 'copy',
+                    handler: () =>
+                    {
+                        console.log('Share clicked');
+                    }
+                },
+                {
+                    text: '取消',
+                    icon: 'close',
+                    role: 'cancel'
+                }]
         });
         await actionSheet.present();
     }
