@@ -95,6 +95,13 @@ export class Tab2Page
         // 获取输入内容
         let query = event.target.value.toLowerCase();
 
+        // Record
+        // 记录
+        this.recordQuery(query);
+
+        // Search
+        // 查询
+        this.onClickHistory(query);
     }
 
     /**
