@@ -375,7 +375,10 @@ export class Tab2Page
                     icon: 'copy',
                     handler: () =>
                     {
-                        console.log('Share clicked');
+                        let content = cardNode.getAttribute("hy-subtitle") + "是" +
+                                cardNode.getAttribute("hy-title") + "!\n" +
+                                cardNode.getAttribute("hy-content");
+                        console.log(content);
                     }
                 },
                 {
