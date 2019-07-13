@@ -276,7 +276,7 @@ export class Tab2Page
             .replace('%{title}', title)
             .replace('%{content-html}', content == null ? '' :
                 CARD_CONTENT_TEMPLATE.replace('%{content}', content))
-            .replace('%{class}', _class == null ? '' : _class));
+            .replace('%{class}', _class == null ? '' : _class)) as HTMLElement;
 
         // Add listener
         // 注册监听
