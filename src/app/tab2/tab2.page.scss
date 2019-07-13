@@ -13,3 +13,12 @@ ion-header.ios
 {
     margin-bottom: 8px !important;
 }
+
+// Center the spinner in the card
+// 让加载圈占满整个卡片
+ion-spinner.hy-card-spinner
+{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
