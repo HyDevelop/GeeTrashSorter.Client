@@ -105,7 +105,7 @@ export class Tab2Page
      *
      * @param text Query text
      */
-    private recordQuery(text: String)
+    private recordQuery(text:string)
     {
         // Already contains entry
         // 已经记录了
@@ -127,7 +127,7 @@ export class Tab2Page
      * @param text Clicked entry
      * @param target Target to add the result below
      */
-    private onClickHistory(text: String, target)
+    private onClickHistory(text:string, target)
     {
         // Send a GET request
         // 发送 GET 请求
