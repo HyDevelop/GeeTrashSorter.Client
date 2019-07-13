@@ -176,19 +176,25 @@ export class Tab2Page
         {
 
         }
+    }
 
-        let html = "\n" +
-            "        <ion-card>\n" +
-            "            <ion-card-header>\n" +
-            "                <ion-card-subtitle>${}</ion-card-subtitle>\n" +
-            "                <ion-card-title>${}</ion-card-title>\n" +
-            "            </ion-card-header>\n" +
-            "\n" +
-            "            <ion-card-content>\n" +
-            "                Keep close to Nature's heart... and break clear away, once in awhile,\n" +
-            "                and climb a mountain or spend a week in the woods. Wash your spirit clean.\n" +
-            "            </ion-card-content>\n" +
-            "        </ion-card>"
+    /**
+     * Create a card html element.
+     * 创建一个卡片 HTML
+     *
+     * @param subtitle Subtitle
+     * @param title Title (Below subtitle)
+     * @param content Content (Nullable)
+     * @param _class CSS Class (Nullable)
+     */
+    private static createCard(subtitle:string, title:string, content?:string, _class?:string)
+    {
+        return CARD_TEMPLATE
+            .replace("%{subtitle}", subtitle)
+            .replace("%{title}", title)
+            .replace("%{content-html}", content == null ? "" :
+                CARD_CONTENT_TEMPLATE.replace("%{content}", content))
+            .replace("%{class}", _class == null ? "" : "class=\"" + _class + "\"");
     }
 
     /**
