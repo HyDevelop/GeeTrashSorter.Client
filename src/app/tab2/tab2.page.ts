@@ -344,7 +344,7 @@ export class Tab2Page
         let cardNode = event.target;
         for (;;)
         {
-            if (cardNode.classList().contains("hy-list-card")) break;
+            if (cardNode.classList.contains("hy-list-card")) break;
             if (!cardNode.hasChildNodes()) break;
         }
 
