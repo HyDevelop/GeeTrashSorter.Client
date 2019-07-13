@@ -20,7 +20,7 @@ const STORAGE_HISTORY = 'history'; // 查询垃圾名历史
 
 // Html template for cards
 // 卡片模板
-const CARD_TEMPLATE = '<ion-card id=\'hy-card-%{subtitle}\' class=\'hy-list-card %{class}\'>' +
+const CARD_TEMPLATE = '<ion-card id=\'hy-card-%{query}\' class=\'hy-list-card %{class}\'>' +
     '<ion-card-header><ion-card-subtitle>%{subtitle}</ion-card-subtitle>' +
     '<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>';
 
@@ -201,7 +201,7 @@ export class Tab2Page
             {
                 // Obtain element
                 // 获取对象
-                let element = Tab2Page.processHttpResponse(request);
+                let element = Tab2Page.processHttpResponse(text, request);
 
                 // Remove loading from html view
                 // 移除加载卡片
@@ -220,50 +220,52 @@ export class Tab2Page
      * Process http api response
      * 处理 HTTP API 返回
      *
+     * @param query What the user searched
      * @param request Http request
      * @returns Element to insert after target
      */
-    private static processHttpResponse(request: XMLHttpRequest)
+    private static processHttpResponse(query: string, request: XMLHttpRequest)
     {
         // Some HTTP error code
         // HTTP 错误码
         if (request.status != 200)
-            return Tab2Page.createCard('发生错误', '网络连接异常', null, 'hy-card-error');
+            return Tab2Page.createCard(query, '发生错误', '网络连接异常', null, 'hy-card-error');
 
         // No data
         // 没有数据
         if (request.responseText.toLowerCase().includes('error: no data'))
-            return Tab2Page.createCard('发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
+            return Tab2Page.createCard(query, '发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
 
         // Other errors
         // 其他错误 TODO: 自动重试
         if (request.responseText.includes('Error'))
         {
             console.log(request.responseText);
-            return Tab2Page.createCard('发生错误', '未知错误, 请重试', null, 'hy-card-error');
+            return Tab2Page.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
         }
 
         // Request success
         // 请求正常
         let response = JSON.parse(request.responseText);
-        return Tab2Page.createCard(response.name, response.type, response.steps, 'hy-card-success');
+        return Tab2Page.createCard(query, response.name, response.type, response.steps, 'hy-card-success');
     }
 
     /**
      * Create a card html element.
      * 创建一个卡片 HTML
      *
+     * @param query What the user searched.
      * @param subtitle Subtitle
      * @param title Title (Below subtitle)
      * @param content Content (Nullable)
      * @param _class CSS Class (Nullable)
      * @returns Html element.
      */
-    private static createCard(subtitle: string, title: string, content?: string, _class?: string)
+    private static createCard(query: string, subtitle: string, title: string, content?: string, _class?: string)
     {
         let node = this.toElement(CARD_TEMPLATE
-            .replace('%{subtitle}', subtitle) // For ID
-            .replace('%{subtitle}', subtitle) // For subtitle
+            .replace('%{query}', query)
+            .replace('%{subtitle}', subtitle)
             .replace('%{title}', title)
             .replace('%{content-html}', content == null ? '' :
                 CARD_CONTENT_TEMPLATE.replace('%{content}', content))
