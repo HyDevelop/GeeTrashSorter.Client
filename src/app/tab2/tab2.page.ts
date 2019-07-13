@@ -199,7 +199,10 @@ export class Tab2Page
         // Other errors
         // 其他错误 TODO: 自动重试
         if (request.responseText.includes("Error"))
+        {
+            console.log(request.responseText);
             return Tab2Page.createCard("发生错误", "未知错误, 请重试", null, "hy-card-error");
+        }
 
         // Request success
         // 请求正常
