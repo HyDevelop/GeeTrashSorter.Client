@@ -129,10 +129,7 @@ export class Tab2Page
 
         // Wait for ngfor to update record in html view
         // 等 ngFor 更新
-        pWaitFor(() =>
-        {
-            return document.getElementById('hy-history-item-' + query) == null
-        }).then(() =>
+        pWaitFor(() => document.getElementById('hy-history-item-' + query) == null).then(() =>
         {
             // Search
             // 查询
