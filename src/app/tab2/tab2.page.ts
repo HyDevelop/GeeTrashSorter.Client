@@ -3,6 +3,8 @@ import {Storage} from '@ionic/storage';
 
 // TODO: Add splash
 // TODO: Show loading
+// TODO: Remove duplicate
+// TODO: Show entry when searching
 
 // API Base URL
 // API 基础链接 TODO: 添加北京
@@ -157,7 +159,7 @@ export class Tab2Page
                     target = document.getElementById("hy-history-item-" + text);
 
                 // Insert it to html view
-                // 添加到显示 TODO: Test this
+                // 添加到显示
                 target.parentNode.insertBefore(element, target.nextSibling)
             }
         };
