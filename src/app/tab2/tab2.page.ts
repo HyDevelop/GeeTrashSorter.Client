@@ -6,6 +6,7 @@ import {ActionSheetController} from '@ionic/angular';
 // TODO: Add splash
 // TODO: Add some ng-Fx
 // TODO: Blocks clicks before one result successfully loads.
+// TODO: Share
 
 // API Base URL
 // API 基础链接 TODO: 添加北京
@@ -72,11 +73,6 @@ export class Tab2Page
         private storage: Storage,
         private actionSheetController: ActionSheetController)
     {
-        // TODO: Remove debug array.
-        storage.set(STORAGE_HISTORY, ['芒果干', '湿纸巾', '电池', '纸巾']);
-
-        console.log('Tab2Page.constructor()');
-
         // Obtain search history
         // 获取搜索历史
         storage.get(STORAGE_HISTORY).then(value =>
@@ -85,7 +81,7 @@ export class Tab2Page
             // 初始化数值
             if (value == null)
             {
-                storage.set(STORAGE_HISTORY, value = []);
+                storage.set(STORAGE_HISTORY, value = ['芒果干', '湿纸巾', '电池']);
             }
 
             // Assign result to the displaying array of ngFor
