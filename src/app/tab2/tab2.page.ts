@@ -201,6 +201,19 @@ export class Tab2Page
     }
 
     /**
+     * Create DOM element from html string
+     * 从 HTML 字符串创建 DOM 节点
+     *
+     * @param htmlString Html string
+     */
+    private static createElementFromHtmlString(htmlString)
+    {
+        let div = document.createElement('div');
+        div.innerHTML = htmlString.trim();
+        return div.firstChild;
+    }
+
+    /**
      * This method is executed when user types
      * 用户输入事件
      *
