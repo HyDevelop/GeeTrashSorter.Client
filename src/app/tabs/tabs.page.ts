@@ -18,7 +18,7 @@ export class TabsPage
      * Current tab (Synced read, manual update)
      * 当前页面 (同步读取, 手动更新)
      */
-    private syncedCurrentTab: string;
+    private syncedCurrentTab: string = "tab1";
 
     constructor()
     {
