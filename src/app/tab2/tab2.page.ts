@@ -199,7 +199,7 @@ export class Tab2Page
         // Request success
         // 请求正常
         let response = JSON.parse(request.responseText);
-        return Tab2Page.createCard(response.name, response.type, response.steps);
+        return Tab2Page.createCard(response.name, response.type, response.steps, "hy-card-success");
     }
 
     /**
