@@ -227,7 +227,7 @@ export class Tab2Page
      * @param request Http request
      * @returns Element to insert after target
      */
-    private static processHttpResponse(query: string, request: XMLHttpRequest)
+    private processHttpResponse(query: string, request: XMLHttpRequest)
     {
         // Some HTTP error code
         // HTTP 错误码
@@ -264,7 +264,7 @@ export class Tab2Page
      * @param _class CSS Class (Nullable)
      * @returns Html element.
      */
-    private static createCard(query: string, subtitle: string, title: string, content?: string, _class?: string)
+    private createCard(query: string, subtitle: string, title: string, content?: string, _class?: string)
     {
         let node = this.toElement(CARD_TEMPLATE
             .replace('%{query}', query)
@@ -333,7 +333,7 @@ export class Tab2Page
      *
      * @param event Card click event.
      */
-    private static onCardClick(event)
+    private async onCardClick(event)
     {
         // Find card element from the clicked element.
         // 从被点击的节点找到卡片节点
