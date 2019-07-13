@@ -20,7 +20,7 @@ const STORAGE_HISTORY = "history"; // 查询垃圾名历史
 
 // Html template for cards
 // 卡片模板
-const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' class='%{class}'><ion-card-header>" +
+const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' %{class}><ion-card-header>" +
     "<ion-card-subtitle>%{subtitle}</ion-card-subtitle>" +
     "<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>";
 const CARD_CONTENT_TEMPLATE = "<ion-card-content>%{content}</ion-card-content>";
