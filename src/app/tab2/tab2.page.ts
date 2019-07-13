@@ -165,8 +165,11 @@ export class Tab2Page
         if (request.status != 200)
             return Tab2Page.createCard("发生错误", "网络连接异常", null, "hy-card-error");
 
+        // No data
+        // 没有数据
         if (request.responseText === "Error: no data")
-        {
+            return Tab2Page.createCard("发生错误", "这是垃圾吗?", "可以尝试把这个垃圾分成更小的部分再搜索w", "hy-card-error");
+
 
         }
         // Request success
