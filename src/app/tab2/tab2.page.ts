@@ -170,8 +170,11 @@ export class Tab2Page
         if (request.responseText === "Error: no data")
             return Tab2Page.createCard("发生错误", "这是垃圾吗?", "可以尝试把这个垃圾分成更小的部分再搜索w", "hy-card-error");
 
+        // Other errors
+        // 其他错误 TODO: 自动重试
+        if (request.responseText.includes("Error"))
+            return Tab2Page.createCard("发生错误", "未知错误, 请重试", null, "hy-card-error");
 
-        }
         // Request success
         // 请求正常
         let response = JSON.parse(request.responseText);
