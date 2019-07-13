@@ -22,8 +22,7 @@
 
 <ion-content>
     <ion-list id="hy-item-list" lines="none">
-        <ion-item *ngIf="syncedSearchFocused &&
-                         syncedSearchText != '' &&
+        <ion-item *ngIf="syncedSearchText != '' &&
                          syncedItemListArray.indexOf(syncedSearchText) == -1"
                   (click)="onSearchBarEnter(null)"
                   id="hy-history-item-searched">
