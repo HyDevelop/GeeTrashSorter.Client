@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Storage} from '@ionic/storage';
 import pWaitFor from 'p-wait-for';
+import {ActionSheetController} from '@ionic/angular';
 
 // TODO: Add splash
 // TODO: Add some ng-Fx
@@ -67,7 +68,9 @@ export class Tab2Page
      */
     private syncedSearchFocused: boolean;
 
-    public constructor(private storage: Storage)
+    public constructor(
+        private storage: Storage,
+        private actionSheetController: ActionSheetController)
     {
         // TODO: Remove debug array.
         storage.set(STORAGE_HISTORY, ['芒果干', '湿纸巾', '电池', '纸巾']);
