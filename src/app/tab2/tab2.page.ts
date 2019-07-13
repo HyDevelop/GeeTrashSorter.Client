@@ -14,6 +14,12 @@ const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 // 数据库键名
 const STORAGE_HISTORY = "history"; // 查询垃圾名历史
 
+// Html template for cards
+// 卡片模板
+const CARD_TEMPLATE = "<ion-card><ion-card-header><ion-card-subtitle>%{subtitle}</ion-card-subtitle>" +
+    "<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>";
+const CARD_CONTENT_TEMPLATE = "<ion-card-content>%{content}</ion-card-content>";
+
 @Component({
     selector: 'app-tab2',
     templateUrl: 'tab2.page.html',
