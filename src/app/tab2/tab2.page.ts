@@ -90,6 +90,29 @@ export class Tab2Page
         // 获取输入内容
         let query = event.target.value.toLowerCase();
 
+        //
+
+    }
+
+    /**
+     * Record query to storage
+     * 记录查询到数据库
+     *
+     * @param text Query text
+     */
+    private recordQuery(text: String)
+    {
+        // Already contains entry
+        // 已经记录了
+        if (this.syncedItemListArray.contains(text)) return;
+
+        // Record entry
+        // 记录
+        this.syncedItemListArray.add(text);
+
+        // Sync to storage
+        // 同步到数据库
+        this.storage.set(STORAGE_HISTORY, this.syncedItemListArray);
         // Send a GET request
         // 发送 GET 请求
         let request = new XMLHttpRequest();
