@@ -99,6 +99,17 @@ export class Tab2Page
     }
 
     /**
+     * This method is called when the user enters or leaves the search bar.
+     * 用户点击/点出搜索框事件
+     *
+     * @param value Focused or not
+     */
+    private onSearchFocusChange(value: boolean)
+    {
+        this.syncedSearchFocused = value;
+    }
+
+    /**
      * This method is executed when user searches.
      * 用户搜索事件
      *
