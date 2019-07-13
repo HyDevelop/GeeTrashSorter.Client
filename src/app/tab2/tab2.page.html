@@ -9,7 +9,7 @@
     </ion-toolbar>
     <ion-toolbar>
         <ion-searchbar [(ngModel)]="syncedSearchText"
-                       (search)="onSearchBarEnter($event)"
+                       (search)="onSearchBarEnter()"
                        (ionInput)="onSearchBarInput($event)"
                        (ionFocus)="onSearchFocusChange(true)"
                        (ionBlur)="onSearchFocusChange(false)"
@@ -24,7 +24,7 @@
     <ion-list id="hy-item-list" lines="none">
         <ion-item *ngIf="syncedSearchText != '' &&
                          syncedItemListArray.indexOf(syncedSearchText) == -1"
-                  (click)="onSearchBarEnter(null)"
+                  (click)="onSearchBarEnter()"
                   id="hy-history-item-searched">
             <ion-icon name="search"></ion-icon>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{syncedSearchText}}</p>

@@ -112,16 +112,12 @@ export class Tab2Page
     /**
      * This method is executed when user searches.
      * 用户搜索事件
-     *
-     * @param event Search event
      */
-    private onSearchBarEnter(event)
+    private onSearchBarEnter()
     {
-        console.log(event);
-
         // Obtain input text
         // 获取输入内容
-        let query = event.target.value.toLowerCase();
+        let query = this.syncedSearchText.toLowerCase();
 
         // Record
         // 记录
