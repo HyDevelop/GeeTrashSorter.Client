@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 
 @Component({
     selector: 'app-tab3',
@@ -8,7 +7,7 @@ import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 })
 export class Tab3Page
 {
-    constructor(private camera: Camera)
+    constructor()
     {
 
     }
