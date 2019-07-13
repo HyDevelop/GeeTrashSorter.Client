@@ -141,6 +141,10 @@ export class Tab2Page
      */
     private onClickHistory(text:string, target?)
     {
+        // Check if already exists
+        // 检查重复
+        if (document.getElementById("hy-card-" + text)) return;
+
         // Send a GET request
         // 发送 GET 请求
         let request = new XMLHttpRequest();
