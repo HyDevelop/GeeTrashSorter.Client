@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 
 @Component({
     selector: 'app-tabs',
@@ -53,8 +53,11 @@ export class TabsPage
         {
             quality: 100,
             destinationType: this.camera.DestinationType.DATA_URL,
+            sourceType: this.camera.PictureSourceType.CAMERA,
+            allowEdit: true,
             encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
+            mediaType: this.camera.MediaType.PICTURE,
+            cameraDirection: this.camera.Direction.BACK,
         };
 
         this.camera.getPicture(options).then
