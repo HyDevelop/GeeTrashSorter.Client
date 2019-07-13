@@ -113,21 +113,37 @@ export class Tab2Page
         // Sync to storage
         // 同步到数据库
         this.storage.set(STORAGE_HISTORY, this.syncedItemListArray);
+    }
+
+    /**
+     * This method is called when the user clicks an item in query history.
+     * 点击历史记录项
+     *
+     * @param text Clicked entry
+     * @param target Target to add the result below
+     */
+    private onClickHistory(text: String, target)
+    {
         // Send a GET request
         // 发送 GET 请求
         let request = new XMLHttpRequest();
         request.onreadystatechange = function()
         {
-            if (request.readyState == 4 && request.status == 200)
+            // Process results
+            // 处理结果
+            if (request.readyState == 4)
             {
-                console.log(request.responseText);
+                // Obtain element
+                // 获取对象
+                let element = Tab2Page.processHttpResponse(request);
 
-
+                // Insert it to html view
+                // 添加到显示 TODO: Test this
+                target.parentNode.insertBefore(element, target.nextSibling())
             }
         };
-        console.log(CORS_PROXY + BASE_URL + query);
-        request.open("GET", CORS_PROXY + BASE_URL + query, true); // true for asynchronous
-        request.send(null);
+        request.open("GET", CORS_PROXY + BASE_URL + text, true);
+        request.send("");
     }
 
     /**
