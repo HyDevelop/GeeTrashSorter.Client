@@ -282,6 +282,15 @@ export class Tab2Page
         // 注册监听
         node.addEventListener('click', (event) => this.onCardClick(event));
 
+        // Add content to attributes.
+        // 添加内容到属性
+        if (_class ==  'hy-card-success')
+        {
+            node.setAttribute("hy-subtitle", subtitle);
+            node.setAttribute("hy-title", title);
+            node.setAttribute("hy-content", content);
+        }
+
         return node;
     }
 
