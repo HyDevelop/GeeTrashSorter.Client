@@ -153,10 +153,6 @@ export class Tab2Page
                 if (target == null)
                     target = document.getElementById("hy-history-item-" + text);
 
-                console.log(target);
-                console.log("-----------");
-                console.log(target.parentNode);
-
                 // Insert it to html view
                 // 添加到显示 TODO: Test this
                 target.parentNode.insertBefore(element, target.nextSibling)
@@ -237,8 +233,6 @@ export class Tab2Page
      */
     private onSearchBarInput(event)
     {
-        console.log("HandleInput");
-
         // Obtain input text
         // 获取输入内容
         let query = event.target.value.toLowerCase();
