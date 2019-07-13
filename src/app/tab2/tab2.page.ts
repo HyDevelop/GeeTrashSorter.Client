@@ -141,9 +141,14 @@ export class Tab2Page
      */
     private onClickHistory(text:string, target?)
     {
-        // Check if already exists
-        // 检查重复
-        if (document.getElementById("hy-card-" + text)) return;
+        // Check if already exists, remove if it is not success
+        // 检查重复, 如果不是成功的话就移除
+        let existing = document.getElementById("hy-card-" + text);
+        if (existing != null)
+        {
+            if (existing.classList.contains("hy-card-success")) return;
+            else existing.remove();
+        }
 
         // Send a GET request
         // 发送 GET 请求
