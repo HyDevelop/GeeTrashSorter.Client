@@ -119,7 +119,7 @@ export class Tab2Page
 
         // Record entry to the first place
         // 记录到最前面
-        this.syncedItemListArray.add(text, 0);
+        this.syncedItemListArray.unshift(text);
 
         // Sync to storage
         // 同步到数据库
