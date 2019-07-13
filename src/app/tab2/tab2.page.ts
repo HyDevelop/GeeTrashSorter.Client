@@ -5,7 +5,6 @@ import {ActionSheetController} from '@ionic/angular';
 
 // TODO: Add splash
 // TODO: Add some ng-Fx
-// TODO: Blocks clicks before one result successfully loads.
 // TODO: Share
 
 // API Base URL
