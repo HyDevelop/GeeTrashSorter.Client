@@ -12,11 +12,12 @@ export class TabsPage
     }
 
     /**
-     * Called when a tab icon is clicked.
+     * This method is called when a tab icon is clicked.
+     * 标签页转向事件
      *
-     * @param $event The tab change event.
+     * @param tab The tab that it changed to.
      */
-    tabChanged($event: {tab: string })
+    private onTabChange(tab: string)
     {
 
     }
