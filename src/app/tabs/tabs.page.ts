@@ -14,6 +14,12 @@ export class TabsPage
      */
     private elementCameraButton;
 
+    /**
+     * Current tab (Synced read, manual update)
+     * 当前页面 (同步读取, 手动更新)
+     */
+    private syncedCurrentTab: string;
+
     constructor()
     {
         // Constructs itself, good job!
@@ -27,16 +33,7 @@ export class TabsPage
      */
     private onTabChange(tab: string)
     {
-        // Wait for page to finish loading
-        // 等页面加载完
-        pWaitFor(() => this.elementCameraButton != null).then(() =>
-        {
-            // Show on main / search, not shown on settings / about
-            // 在主页或搜索页上显示, 不在设置或关于页显示
-            if (+tab < 3) this.elementCameraButton.show();
-            else this.elementCameraButton.hide();
-        });
-
+        this.syncedCurrentTab = tab;
     }
 
     /**
@@ -47,5 +44,4 @@ export class TabsPage
     {
         this.elementCameraButton = document.querySelector('#hy-camera-button');
     }
-
 }
