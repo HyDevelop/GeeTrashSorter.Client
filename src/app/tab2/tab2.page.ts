@@ -95,8 +95,6 @@ export class Tab2Page
         // 获取输入内容
         let query = event.target.value.toLowerCase();
 
-        //
-
     }
 
     /**
@@ -189,15 +187,16 @@ export class Tab2Page
      * @param title Title (Below subtitle)
      * @param content Content (Nullable)
      * @param _class CSS Class (Nullable)
+     * @returns Html element.
      */
     private static createCard(subtitle:string, title:string, content?:string, _class?:string)
     {
-        return CARD_TEMPLATE
+        return this.createElementFromHtmlString(CARD_TEMPLATE
             .replace("%{subtitle}", subtitle)
             .replace("%{title}", title)
             .replace("%{content-html}", content == null ? "" :
                 CARD_CONTENT_TEMPLATE.replace("%{content}", content))
-            .replace("%{class}", _class == null ? "" : "class=\"" + _class + "\"");
+            .replace("%{class}", _class == null ? "" : "class=\"" + _class + "\""));
     }
 
     /**
