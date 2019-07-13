@@ -339,6 +339,15 @@ export class Tab2Page
      */
     private async onCardClick(event)
     {
+        // Find card element from the clicked element.
+        // 从被点击的节点找到卡片节点
+        let cardNode = event.target;
+        for (;;)
+        {
+            if (cardNode.classList().contains("hy-list-card")) break;
+            if (!cardNode.hasChildNodes()) break;
+        }
+
         // Generate card click action sheet
         // 生成点击卡片的动作列表
         const actionSheet = await this.actionSheetController.create(
@@ -351,18 +360,11 @@ export class Tab2Page
                 icon: 'trash',
                 handler: () =>
                 {
-                    // Find card element from the clicked element.
-                    // 从被点击的节点找到卡片节点
-                    let node = event.target;
-                    for (;;)
-                    {
-                        if (node.classList().contains("hy-list-card")) break;
-                        if (!node.hasChildNodes()) break;
-                    }
+
 
                     // Remove node
                     // 移除
-                    node.remove();
+                    cardNode.remove();
                 }
             }, {
                 text: 'Share',
