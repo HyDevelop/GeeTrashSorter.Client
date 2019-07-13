@@ -179,6 +179,11 @@ export class Tab2Page
             else existing.remove();
         }
 
+        // Check if already loading
+        // 检查是不是已经在加载了
+        let existingLoading = document.getElementById("hy-loading-" + text);
+        if (existingLoading != null) return;
+
         // Remove spaces before and after text
         // 移除前后空格
         text = text.trim();
