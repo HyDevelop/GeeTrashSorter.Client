@@ -5,6 +5,8 @@ import {Storage} from '@ionic/storage';
 // TODO: Show loading
 // TODO: Remove duplicate
 // TODO: Show entry when searching
+// TODO: Closable card
+// TODO: Add some ng-Fx
 
 // API Base URL
 // API 基础链接 TODO: 添加北京
