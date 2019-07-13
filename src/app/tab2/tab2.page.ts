@@ -3,7 +3,6 @@ import {Storage} from '@ionic/storage';
 import pWaitFor from 'p-wait-for';
 
 // TODO: Add splash
-// TODO: Show entry when searching
 // TODO: Closable card
 // TODO: Add some ng-Fx
 
@@ -21,8 +20,8 @@ const STORAGE_HISTORY = 'history'; // 查询垃圾名历史
 
 // Html template for cards
 // 卡片模板
-const CARD_TEMPLATE = '<ion-card id=\'hy-card-%{subtitle}\' class=\'hy-list-card %{class}\'><ion-card-header>' +
-    '<ion-card-subtitle>%{subtitle}</ion-card-subtitle>' +
+const CARD_TEMPLATE = '<ion-card id=\'hy-card-%{subtitle}\' class=\'hy-list-card %{class}\'>' +
+    '<ion-card-header><ion-card-subtitle>%{subtitle}</ion-card-subtitle>' +
     '<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>';
 
 const CARD_CONTENT_TEMPLATE = '<ion-card-content>%{content}</ion-card-content>';
@@ -315,5 +314,17 @@ export class Tab2Page
                 item.style.display = shouldShow ? 'block' : 'none';
             });
         });
+    }
+
+    /**
+     * This method is called when a card is clicked
+     * 卡片点击事件
+     *
+     * @param event Card click event.
+     */
+    private static onCardClick(event)
+    {
+        console.log(('Click, ' + event));
+        event.target.remove();
     }
 }
