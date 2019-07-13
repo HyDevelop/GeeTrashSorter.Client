@@ -12,8 +12,7 @@ const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
 // Storage key constant
 // 数据库键名
-const STORAGE_HISTORY = "history";
-
+const STORAGE_HISTORY = "history"; // 查询垃圾名历史
 
 @Component({
     selector: 'app-tab2',
@@ -46,7 +45,7 @@ export class Tab2Page
      */
     private syncedSearchText: any;
 
-    constructor(private storage: Storage)
+    public constructor(private storage: Storage)
     {
         // TODO: Remove debug array.
         storage.set(STORAGE_HISTORY, ["芒果干", "苹果", "垃圾袋", "纸巾"]);
@@ -71,7 +70,7 @@ export class Tab2Page
      * This method is called when the html finishes loading.
      * HTML 加载完成事件
      */
-    ionViewDidEnter()
+    private ionViewDidEnter()
     {
         this.elementSearch = document.querySelector('#hy-search-bar');
         this.elementItemList = document.querySelector('#hy-item-list');
@@ -83,7 +82,7 @@ export class Tab2Page
      *
      * @param event Search event
      */
-    onSearchBarEnter(event)
+    private onSearchBarEnter(event)
     {
         console.log(event);
 
@@ -125,7 +124,7 @@ export class Tab2Page
      *
      * @param event Input event
      */
-    onSearchBarInput(event)
+    private onSearchBarInput(event)
     {
         console.log("HandleInput");
 
