@@ -14,6 +14,13 @@ ion-header.ios
     margin-bottom: 8px !important;
 }
 
+// Remove top margin from ios cards
+// 移除苹果卡片上面的空间
+ion-card.ios.hy-list-card
+{
+    margin-top: 0 !important;
+}
+
 // Center the spinner in the card
 // 让加载圈占满整个卡片
 ion-spinner.hy-card-spinner
