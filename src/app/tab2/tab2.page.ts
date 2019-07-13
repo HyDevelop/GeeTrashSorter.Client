@@ -339,14 +339,17 @@ export class Tab2Page
      */
     private async onCardClick(event)
     {
+        console.log(event.target);
+
         // Find card element from the clicked element.
         // 从被点击的节点找到卡片节点
         let cardNode = event.target;
         for (let i = 0; i < 6; i++)
         {
             if (cardNode.classList.contains("hy-list-card")) break;
-            if (!cardNode.hasChildNodes()) break;
+            cardNode = cardNode.parentNode;
         }
+        if (!cardNode.classList.contains("hy-list-card")) cardNode = null;
 
         // Generate card click action sheet
         // 生成点击卡片的动作列表
