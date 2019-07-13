@@ -2,8 +2,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {Storage} from '@ionic/storage';
 
 // TODO: Add splash
-// TODO: Show loading
-// TODO: Remove duplicate
 // TODO: Show entry when searching
 // TODO: Closable card
 // TODO: Add some ng-Fx
