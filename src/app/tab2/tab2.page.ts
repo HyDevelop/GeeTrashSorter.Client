@@ -144,7 +144,7 @@ export class Tab2Page
 
                 // Insert it to html view
                 // 添加到显示 TODO: Test this
-                target.parentNode.insertBefore(element, target.nextSibling())
+                target.parentNode.insertBefore(element, target.nextSibling)
             }
         };
         request.open("GET", CORS_PROXY + BASE_URL + text, true);
