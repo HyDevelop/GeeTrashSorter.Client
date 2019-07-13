@@ -147,14 +147,43 @@ export class Tab2Page
     }
 
     /**
-     * Record query to storage
-     * 记录查询到数据库
+     * Process http api response
+     * 处理 HTTP API 返回
      *
-     * @param text Query text
+     * @param request Http request
+     * @returns Element to insert after target
      */
-    recordQuery(text: String)
+    private static processHttpResponse(request: XMLHttpRequest)
     {
+        // Some HTTP error code
+        // HTTP 错误码
+        if (request.status != 200)
+        {
 
+            return
+        }
+
+        console.log(request.responseText);
+
+
+
+        if (request.responseText === "Error: no data")
+        {
+
+        }
+
+        let html = "\n" +
+            "        <ion-card>\n" +
+            "            <ion-card-header>\n" +
+            "                <ion-card-subtitle>${}</ion-card-subtitle>\n" +
+            "                <ion-card-title>${}</ion-card-title>\n" +
+            "            </ion-card-header>\n" +
+            "\n" +
+            "            <ion-card-content>\n" +
+            "                Keep close to Nature's heart... and break clear away, once in awhile,\n" +
+            "                and climb a mountain or spend a week in the woods. Wash your spirit clean.\n" +
+            "            </ion-card-content>\n" +
+            "        </ion-card>"
     }
 
     /**
