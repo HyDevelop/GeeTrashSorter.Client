@@ -6,3 +6,10 @@
     height: 0;
     background-image: none;
 }
+
+// Add space after ios header
+// 苹果标题框下面空出空间
+ion-header.ios
+{
+    margin-bottom: 8px;
+}
