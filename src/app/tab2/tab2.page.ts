@@ -59,7 +59,7 @@ export class Tab2Page
      * User input text for search (Live updating)
      * 用户搜索输入 (动态更新)
      */
-    private syncedSearchText: any;
+    private syncedSearchText: string;
 
     public constructor(private storage: Storage)
     {
