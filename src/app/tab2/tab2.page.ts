@@ -105,9 +105,10 @@ export class Tab2Page
      */
     private recordQuery(text:string)
     {
-        // Already contains entry
-        // 已经记录了
-        if (this.syncedItemListArray.contains(text)) return;
+        // Already contains entry, remove it
+        // 已经记录了的话移除掉
+        if (this.syncedItemListArray.contains(text))
+            this.syncedItemListArray.remove(text);
 
         // Record entry
         // 记录
