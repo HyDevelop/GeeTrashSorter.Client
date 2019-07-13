@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {Storage} from '@ionic/storage';
-import {RequestOptionsArgs} from '@angular/http';
 
 // API Base URL
 // API 基础链接 TODO: 添加北京
