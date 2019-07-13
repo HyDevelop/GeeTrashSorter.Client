@@ -19,7 +19,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-list id="hy-item-list" inset="true" lines="none">
+    <ion-list id="hy-item-list" lines="none">
         <ion-item *ngFor="let term of syncedItemListArray;"
                   (click)="onClickHistory(term)"
                   id="hy-history-item-{{term}}">
