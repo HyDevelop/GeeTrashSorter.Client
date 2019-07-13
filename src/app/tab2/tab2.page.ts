@@ -339,17 +339,58 @@ export class Tab2Page
      */
     private async onCardClick(event)
     {
-        // Find card element from the clicked element.
-        // 从被点击的节点找到卡片节点
-        let node = event.target;
-        for (;;)
+        // Generate card click action sheet
+        // 生成点击卡片的动作列表
+        const actionSheet = await this.actionSheetController.create(
         {
-            if (node.classList().contains("hy-list-card")) break;
-            if (!node.hasChildNodes()) break;
-        }
+            header: 'Albums',
+            buttons: [
+            {
+                text: 'Delete',
+                role: 'destructive',
+                icon: 'trash',
+                handler: () =>
+                {
+                    // Find card element from the clicked element.
+                    // 从被点击的节点找到卡片节点
+                    let node = event.target;
+                    for (;;)
+                    {
+                        if (node.classList().contains("hy-list-card")) break;
+                        if (!node.hasChildNodes()) break;
+                    }
 
-        // Remove node
-        // 移除
-        node.remove();
+                    // Remove node
+                    // 移除
+                    node.remove();
+                }
+            }, {
+                text: 'Share',
+                icon: 'share',
+                handler: () => {
+                    console.log('Share clicked');
+                }
+            }, {
+                text: 'Play (open modal)',
+                icon: 'arrow-dropright-circle',
+                handler: () => {
+                    console.log('Play clicked');
+                }
+            }, {
+                text: 'Favorite',
+                icon: 'heart',
+                handler: () => {
+                    console.log('Favorite clicked');
+                }
+            }, {
+                text: 'Cancel',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        });
+        await actionSheet.present();
     }
 }
