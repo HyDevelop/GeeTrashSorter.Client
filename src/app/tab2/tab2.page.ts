@@ -163,14 +163,7 @@ export class Tab2Page
         // Some HTTP error code
         // HTTP 错误码
         if (request.status != 200)
-        {
-
-            return
-        }
-
-        console.log(request.responseText);
-
-
+            return Tab2Page.createCard("发生错误", "网络连接异常", null, "hy-card-error");
 
         if (request.responseText === "Error: no data")
         {
