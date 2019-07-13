@@ -144,6 +144,11 @@ export class Tab2Page
                 // 如果未指定目标, 获取目标对象
                 if (target == null)
                     target = document.getElementById("hy-history-item-" + text);
+
+                console.log(target);
+                console.log("-----------");
+                console.log(target.parentNode);
+
                 // Insert it to html view
                 // 添加到显示 TODO: Test this
                 target.parentNode.insertBefore(element, target.nextSibling)
