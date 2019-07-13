@@ -193,8 +193,8 @@ export class Tab2Page
 
         // No data
         // 没有数据
-            return Tab2Page.createCard("发生错误", "这是垃圾吗?", "可以尝试把这个垃圾分成更小的部分再搜索w", "hy-card-error");
         if (request.responseText.toLowerCase().includes("error: no data"))
+            return Tab2Page.createCard("发生错误", "还没有收录它的数据", "可以尝试把这个垃圾分成更小的部分再搜索w", "hy-card-error");
 
         // Other errors
         // 其他错误 TODO: 自动重试
