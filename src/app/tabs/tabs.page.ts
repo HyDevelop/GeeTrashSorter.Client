@@ -27,5 +27,13 @@ export class TabsPage
     private onTabChange(tab: string)
     {
 
+    /**
+     * This method is called when the html finishes loading.
+     * HTML 加载完成事件
+     */
+    private ionViewDidEnter()
+    {
+        this.elementCameraButton = document.querySelector('#hy-camera-button');
     }
+
 }
