@@ -143,7 +143,7 @@ export class Tab2Page
         // Already contains entry, remove it
         // 已经记录了的话移除掉
         if (this.syncedItemListArray.includes(text))
-            this.syncedItemListArray.remove(text);
+            this.syncedItemListArray.splice(this.syncedItemListArray.indexOf(text, 0), 1);
 
         // Record entry to the first place
         // 记录到最前面
