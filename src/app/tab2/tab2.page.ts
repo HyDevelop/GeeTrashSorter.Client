@@ -22,7 +22,7 @@ const STORAGE_HISTORY = "history"; // 查询垃圾名历史
 
 // Html template for cards
 // 卡片模板
-const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' %{class}><ion-card-header>" +
+const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' class='hy-list-card %{class}'><ion-card-header>" +
     "<ion-card-subtitle>%{subtitle}</ion-card-subtitle>" +
     "<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>";
 
@@ -243,7 +243,7 @@ export class Tab2Page
             .replace("%{title}", title)
             .replace("%{content-html}", content == null ? "" :
                 CARD_CONTENT_TEMPLATE.replace("%{content}", content))
-            .replace("%{class}", _class == null ? "" : "class=\"" + _class + "\""));
+            .replace("%{class}", _class == null ? "" : _class));
     }
 
     /**
