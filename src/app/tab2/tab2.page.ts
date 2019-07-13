@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Storage} from '@ionic/storage';
+import pWaitFor from 'p-wait-for';
 
 // TODO: Add splash
 // TODO: Show entry when searching
@@ -8,26 +9,26 @@ import {Storage} from '@ionic/storage';
 
 // API Base URL
 // API 基础链接 TODO: 添加北京
-const BASE_URL = "http://trash.hydev.org/shanghai?name=";
+const BASE_URL = 'http://trash.hydev.org/shanghai?name=';
 
 // Cross site proxy
 // 跨站脚本代理 TODO: 写自己的代理
-const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
 // Storage key constant
 // 数据库键名
-const STORAGE_HISTORY = "history"; // 查询垃圾名历史
+const STORAGE_HISTORY = 'history'; // 查询垃圾名历史
 
 // Html template for cards
 // 卡片模板
-const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' class='hy-list-card %{class}'><ion-card-header>" +
-    "<ion-card-subtitle>%{subtitle}</ion-card-subtitle>" +
-    "<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>";
+const CARD_TEMPLATE = '<ion-card id=\'hy-card-%{subtitle}\' class=\'hy-list-card %{class}\'><ion-card-header>' +
+    '<ion-card-subtitle>%{subtitle}</ion-card-subtitle>' +
+    '<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>';
 
-const CARD_CONTENT_TEMPLATE = "<ion-card-content>%{content}</ion-card-content>";
+const CARD_CONTENT_TEMPLATE = '<ion-card-content>%{content}</ion-card-content>';
 
-const CARD_LOADING = "<ion-card><ion-spinner name='crescent' class='hy-card-spinner' " +
-    "id='hy-loading-%{subtitle}' color='primary'></ion-spinner></ion-card>";
+const CARD_LOADING = '<ion-card><ion-spinner name=\'crescent\' class=\'hy-card-spinner\' ' +
+    'id=\'hy-loading-%{subtitle}\' color=\'primary\'></ion-spinner></ion-card>';
 
 @Component({
     selector: 'app-tab2',
@@ -59,7 +60,7 @@ export class Tab2Page
      * User input text for search (Live updating)
      * 用户搜索输入 (动态更新)
      */
-    private syncedSearchText: string = "";
+    private syncedSearchText: string = '';
 
     /**
      * Is the search focused (Synced read, manual update)
@@ -70,9 +71,9 @@ export class Tab2Page
     public constructor(private storage: Storage)
     {
         // TODO: Remove debug array.
-        storage.set(STORAGE_HISTORY, ["芒果干", "湿纸巾", "电池", "纸巾"]);
+        storage.set(STORAGE_HISTORY, ['芒果干', '湿纸巾', '电池', '纸巾']);
 
-        console.log("Tab2Page.constructor()");
+        console.log('Tab2Page.constructor()');
 
         // Obtain search history
         // 获取搜索历史
@@ -80,7 +81,10 @@ export class Tab2Page
         {
             // Initialize value if not already
             // 初始化数值
-            if (value == null) storage.set(STORAGE_HISTORY, value = []);
+            if (value == null)
+            {
+                storage.set(STORAGE_HISTORY, value = []);
+            }
 
             // Assign result to the displaying array of ngFor
             // 赋值给 ngFor 显示的数组
@@ -134,7 +138,7 @@ export class Tab2Page
      *
      * @param text Query text
      */
-    private recordQuery(text:string)
+    private recordQuery(text: string)
     {
         // Already contains entry, remove it
         // 已经记录了的话移除掉
@@ -157,14 +161,14 @@ export class Tab2Page
      * @param text Clicked entry
      * @param target Target to add the result below
      */
-    private onClickHistory(text:string, target?)
+    private onClickHistory(text: string, target?)
     {
         // Check if already exists, remove if it is not success
         // 检查重复, 如果不是成功的话就移除
-        let existing = document.getElementById("hy-card-" + text);
+        let existing = document.getElementById('hy-card-' + text);
         if (existing != null)
         {
-            if (existing.classList.contains("hy-card-success")) return;
+            if (existing.classList.contains('hy-card-success')) return;
             else existing.remove();
         }
 
@@ -175,11 +179,11 @@ export class Tab2Page
         // Obtain target if not specified
         // 如果未指定目标, 获取目标对象
         if (target == null)
-            target = document.getElementById("hy-history-item-" + text);
+            target = document.getElementById('hy-history-item-' + text);
 
         // Show loading
         // 显示加载中
-        let loading = Tab2Page.toElement(CARD_LOADING.replace("%{subtitle}", text));
+        let loading = Tab2Page.toElement(CARD_LOADING.replace('%{subtitle}', text));
         target.parentNode.insertBefore(loading, target.nextSibling);
 
         // Send a GET request
@@ -204,8 +208,8 @@ export class Tab2Page
                 target.parentNode.insertBefore(element, target.nextSibling);
             }
         };
-        request.open("GET", CORS_PROXY + BASE_URL + text, true);
-        request.send("");
+        request.open('GET', CORS_PROXY + BASE_URL + text, true);
+        request.send('');
     }
 
     /**
@@ -220,25 +224,25 @@ export class Tab2Page
         // Some HTTP error code
         // HTTP 错误码
         if (request.status != 200)
-            return Tab2Page.createCard("发生错误", "网络连接异常", null, "hy-card-error");
+            return Tab2Page.createCard('发生错误', '网络连接异常', null, 'hy-card-error');
 
         // No data
         // 没有数据
-        if (request.responseText.toLowerCase().includes("error: no data"))
-            return Tab2Page.createCard("发生错误", "还没有收录它的数据", "可以尝试把这个垃圾分成更小的部分再搜索w", "hy-card-error");
+        if (request.responseText.toLowerCase().includes('error: no data'))
+            return Tab2Page.createCard('发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
 
         // Other errors
         // 其他错误 TODO: 自动重试
-        if (request.responseText.includes("Error"))
+        if (request.responseText.includes('Error'))
         {
             console.log(request.responseText);
-            return Tab2Page.createCard("发生错误", "未知错误, 请重试", null, "hy-card-error");
+            return Tab2Page.createCard('发生错误', '未知错误, 请重试', null, 'hy-card-error');
         }
 
         // Request success
         // 请求正常
         let response = JSON.parse(request.responseText);
-        return Tab2Page.createCard(response.name, response.type, response.steps, "hy-card-success");
+        return Tab2Page.createCard(response.name, response.type, response.steps, 'hy-card-success');
     }
 
     /**
@@ -251,15 +255,15 @@ export class Tab2Page
      * @param _class CSS Class (Nullable)
      * @returns Html element.
      */
-    private static createCard(subtitle:string, title:string, content?:string, _class?:string)
+    private static createCard(subtitle: string, title: string, content?: string, _class?: string)
     {
         return this.toElement(CARD_TEMPLATE
-            .replace("%{subtitle}", subtitle) // For ID
-            .replace("%{subtitle}", subtitle) // For subtitle
-            .replace("%{title}", title)
-            .replace("%{content-html}", content == null ? "" :
-                CARD_CONTENT_TEMPLATE.replace("%{content}", content))
-            .replace("%{class}", _class == null ? "" : _class));
+            .replace('%{subtitle}', subtitle) // For ID
+            .replace('%{subtitle}', subtitle) // For subtitle
+            .replace('%{title}', title)
+            .replace('%{content-html}', content == null ? '' :
+                CARD_CONTENT_TEMPLATE.replace('%{content}', content))
+            .replace('%{class}', _class == null ? '' : _class));
     }
 
     /**
