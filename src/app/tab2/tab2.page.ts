@@ -110,9 +110,9 @@ export class Tab2Page
         if (this.syncedItemListArray.contains(text))
             this.syncedItemListArray.remove(text);
 
-        // Record entry
-        // 记录
-        this.syncedItemListArray.add(text);
+        // Record entry to the first place
+        // 记录到最前面
+        this.syncedItemListArray.add(text, 0);
 
         // Sync to storage
         // 同步到数据库
