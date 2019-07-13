@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import pWaitFor from 'p-wait-for';
 
 @Component({
     selector: 'app-tabs',
