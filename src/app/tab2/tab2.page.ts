@@ -167,7 +167,7 @@ export class Tab2Page
 
         // Show loading
         // 显示加载中
-        target.parentNode.insertBefore(Tab2Page.toElement(CARD_LOADING.replace("${subtitle}", text)), target.nextSibling);
+        target.parentNode.insertBefore(Tab2Page.toElement(CARD_LOADING.replace("%{subtitle}", text)), target.nextSibling);
 
         // Send a GET request
         // 发送 GET 请求
