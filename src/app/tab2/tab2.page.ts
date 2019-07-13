@@ -114,7 +114,7 @@ export class Tab2Page
     {
         // Already contains entry, remove it
         // 已经记录了的话移除掉
-        if (this.syncedItemListArray.contains(text))
+        if (this.syncedItemListArray.includes(text))
             this.syncedItemListArray.remove(text);
 
         // Record entry to the first place
