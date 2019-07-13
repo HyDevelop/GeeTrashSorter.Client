@@ -66,7 +66,7 @@ export class Tab2Page
     public constructor(private storage: Storage)
     {
         // TODO: Remove debug array.
-        storage.set(STORAGE_HISTORY, ["芒果干", "苹果", "垃圾袋", "纸巾"]);
+        storage.set(STORAGE_HISTORY, ["芒果干", "湿纸巾", "电池", "纸巾"]);
 
         console.log("Tab2Page.constructor()");
 
