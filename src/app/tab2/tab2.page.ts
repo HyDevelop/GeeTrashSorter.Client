@@ -61,7 +61,7 @@ export class Tab2Page
         // 获取搜索历史
         storage.get(STORAGE_HISTORY).then(value =>
         {
-            // Initialize value if not alread
+            // Initialize value if not already
             // 初始化数值
             if (value == null) storage.set(STORAGE_HISTORY, value = []);
 
