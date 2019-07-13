@@ -332,7 +332,17 @@ export class Tab2Page
      */
     private static onCardClick(event)
     {
-        console.log(('Click, ' + event));
-        event.target.remove();
+        // Find card element from the clicked element.
+        // 从被点击的节点找到卡片节点
+        let node = event.target;
+        for (;;)
+        {
+            if (node.classList().contains("hy-list-card")) break;
+            if (!node.hasChildNodes()) break;
+        }
+
+        // Remove node
+        // 移除
+        node.remove();
     }
 }
