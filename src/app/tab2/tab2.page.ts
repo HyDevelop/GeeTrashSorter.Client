@@ -261,14 +261,19 @@ export class Tab2Page
      */
     private static createCard(subtitle: string, title: string, content?: string, _class?: string)
     {
-        return this.toElement(CARD_TEMPLATE
+        let node = this.toElement(CARD_TEMPLATE
             .replace('%{subtitle}', subtitle) // For ID
             .replace('%{subtitle}', subtitle) // For subtitle
             .replace('%{title}', title)
             .replace('%{content-html}', content == null ? '' :
                 CARD_CONTENT_TEMPLATE.replace('%{content}', content))
-            .replace('%{class}', _class == null ? '' : _class))
-            .addEventListener('click', (event) => Tab2Page.onCardClick(event));
+            .replace('%{class}', _class == null ? '' : _class));
+
+        // Add listener
+        // 注册监听
+        node.addEventListener('click', (event) => Tab2Page.onCardClick(event));
+
+        return node;
     }
 
     /**
