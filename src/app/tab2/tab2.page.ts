@@ -29,7 +29,7 @@ const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' %{class}><ion-card-hea
 const CARD_CONTENT_TEMPLATE = "<ion-card-content>%{content}</ion-card-content>";
 
 const CARD_LOADING = "<ion-card><ion-spinner name='crescent' class='hy-card-spinner' " +
-    "id='hy-loading-%{}' color='primary'></ion-spinner></ion-card>";
+    "id='hy-loading-%{subtitle}' color='primary'></ion-spinner></ion-card>";
 
 @Component({
     selector: 'app-tab2',
@@ -156,6 +156,19 @@ export class Tab2Page
             else existing.remove();
         }
 
+        // Remove spaces before and after text
+        // 移除前后空格
+        text = text.trim();
+
+        // Obtain target if not specified
+        // 如果未指定目标, 获取目标对象
+        if (target == null)
+            target = document.getElementById("hy-history-item-" + text);
+
+        // Show loading
+        // 显示加载中
+        target.parentNode.insertBefore(Tab2Page.toElement(CARD_LOADING.replace("${subtitle}", text)), target.nextSibling);
+
         // Send a GET request
         // 发送 GET 请求
         let request = new XMLHttpRequest();
@@ -169,14 +182,9 @@ export class Tab2Page
                 // 获取对象
                 let element = Tab2Page.processHttpResponse(request);
 
-                // Obtain target if not specified
-                // 如果未指定目标, 获取目标对象
-                if (target == null)
-                    target = document.getElementById("hy-history-item-" + text);
-
                 // Insert it to html view
                 // 添加到显示
-                target.parentNode.insertBefore(element, target.nextSibling)
+                target.parentNode.insertBefore(element, target.nextSibling);
             }
         };
         request.open("GET", CORS_PROXY + BASE_URL + text, true);
@@ -228,7 +236,7 @@ export class Tab2Page
      */
     private static createCard(subtitle:string, title:string, content?:string, _class?:string)
     {
-        return this.createElementFromHtmlString(CARD_TEMPLATE
+        return this.toElement(CARD_TEMPLATE
             .replace("%{subtitle}", subtitle) // For ID
             .replace("%{subtitle}", subtitle) // For subtitle
             .replace("%{title}", title)
@@ -243,7 +251,7 @@ export class Tab2Page
      *
      * @param htmlString Html string
      */
-    private static createElementFromHtmlString(htmlString)
+    private static toElement(htmlString)
     {
         let div = document.createElement('div');
         div.innerHTML = htmlString.trim();
