@@ -7,8 +7,15 @@ import {Component} from '@angular/core';
 })
 export class TabsPage
 {
+    /**
+     * Camera button element
+     * 识图按钮节点
+     */
+    private elementCameraButton;
+
     constructor()
     {
+        // Constructs itself, good job!
     }
 
     /**
