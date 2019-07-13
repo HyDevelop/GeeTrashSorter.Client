@@ -3,13 +3,13 @@
 // 关掉安卓的标题框阴影
 .header-md:after
 {
-    height: 0;
-    background-image: none;
+    height: 0 !important;
+    background-image: none !important;
 }
 
 // Add space after ios header
 // 苹果标题框下面空出空间
 ion-header.ios
 {
-    margin-bottom: 8px;
+    margin-bottom: 8px !important;
 }
