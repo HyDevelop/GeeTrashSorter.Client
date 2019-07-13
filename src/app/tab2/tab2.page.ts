@@ -168,7 +168,8 @@ export class Tab2Page
 
         // Show loading
         // 显示加载中
-        target.parentNode.insertBefore(Tab2Page.toElement(CARD_LOADING.replace("%{subtitle}", text)), target.nextSibling);
+        let loading = Tab2Page.toElement(CARD_LOADING.replace("%{subtitle}", text));
+        target.parentNode.insertBefore(loading, target.nextSibling);
 
         // Send a GET request
         // 发送 GET 请求
@@ -183,8 +184,12 @@ export class Tab2Page
                 // 获取对象
                 let element = Tab2Page.processHttpResponse(request);
 
-                // Insert it to html view
-                // 添加到显示
+                // Remove loading from html view
+                // 移除加载卡片
+                loading.remove();
+
+                // Insert result to html view
+                // 添加结果到显示
                 target.parentNode.insertBefore(element, target.nextSibling);
             }
         };
