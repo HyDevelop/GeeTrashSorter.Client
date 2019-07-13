@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {Storage} from '@ionic/storage';
 
 // TODO: Add splash
@@ -34,7 +34,8 @@ const CARD_LOADING = "<ion-card><ion-spinner name='crescent' class='hy-card-spin
 @Component({
     selector: 'app-tab2',
     templateUrl: 'tab2.page.html',
-    styleUrls: ['tab2.page.scss']
+    styleUrls: ['tab2.page.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class Tab2Page
 {
