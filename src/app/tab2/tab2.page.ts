@@ -342,7 +342,7 @@ export class Tab2Page
         // Find card element from the clicked element.
         // 从被点击的节点找到卡片节点
         let cardNode = event.target;
-        for (;;)
+        for (let i = 0; i < 6; i++)
         {
             if (cardNode.classList.contains("hy-list-card")) break;
             if (!cardNode.hasChildNodes()) break;
