@@ -20,7 +20,7 @@ export class TabsPage
      */
     private syncedCurrentTab: string = "tab1";
 
-    constructor()
+    constructor(private camera: Camera)
     {
         // Constructs itself, good job!
     }
