@@ -19,11 +19,31 @@
 </ion-header>
 
 <ion-content>
-    <ion-list id="hy-item-list">
-        <ion-item *ngFor="let term of syncedItemListArray;">
+    <ion-list id="hy-item-list" inset="true" lines="none">
+        <ion-item>
             <ion-icon name="return-right"></ion-icon>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <p>{{term}}</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test1</p>
         </ion-item>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle>垃圾名是</ion-card-subtitle>
+                <ion-card-title>垃圾分类</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                步骤
+            </ion-card-content>
+        </ion-card>
+        <ion-item>
+            <ion-icon name="return-right"></ion-icon>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test1</p>
+        </ion-item>
+        <ion-item *ngFor="let term of syncedItemListArray;"
+                  (click)="onClickHistory(term, $event.target)"
+                  id="hy-history-item-{{term}}">
+            <ion-icon name="return-right"></ion-icon>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{term}}</p>
+        </ion-item>
+
     </ion-list>
 </ion-content>
