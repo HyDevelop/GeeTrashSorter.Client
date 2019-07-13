@@ -339,8 +339,6 @@ export class Tab2Page
      */
     private async onCardClick(event)
     {
-        console.log(event.target);
-
         // Find card element from the clicked element.
         // 从被点击的节点找到卡片节点
         let cardNode = event.target;
