@@ -39,7 +39,7 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test1</p>
         </ion-item>
         <ion-item *ngFor="let term of syncedItemListArray;"
-                  (click)="onClickHistory(term, $event.target)"
+                  (click)="onClickHistory(term)"
                   id="hy-history-item-{{term}}">
             <ion-icon name="return-right"></ion-icon>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{term}}</p>

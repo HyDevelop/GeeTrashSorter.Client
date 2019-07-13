@@ -125,7 +125,7 @@ export class Tab2Page
      * @param text Clicked entry
      * @param target Target to add the result below
      */
-    private onClickHistory(text:string, target)
+    private onClickHistory(text:string, target?)
     {
         // Send a GET request
         // 发送 GET 请求
@@ -140,6 +140,10 @@ export class Tab2Page
                 // 获取对象
                 let element = Tab2Page.processHttpResponse(request);
 
+                // Obtain target if not specified
+                // 如果未指定目标, 获取目标对象
+                if (target == null)
+                    target = document.getElementById("hy-history-item-" + text);
                 // Insert it to html view
                 // 添加到显示 TODO: Test this
                 target.parentNode.insertBefore(element, target.nextSibling)
