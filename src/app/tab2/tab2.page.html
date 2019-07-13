@@ -29,7 +29,7 @@
             <ion-icon name="search"></ion-icon>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{syncedSearchText}}</p>
         </ion-item>
-        <ion-item *ngFor="let term of syncedItemListArray;"
+        <ion-item *ngFor="let term of syncedItemListArray; let last = last"
                   (click)="onClickHistory(term)"
                   id="hy-history-item-{{term}}">
             <ion-icon name="return-right"></ion-icon>

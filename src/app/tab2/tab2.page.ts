@@ -127,9 +127,17 @@ export class Tab2Page
         // 记录
         this.recordQuery(query);
 
-        // Search
-        // 查询
-        this.onClickHistory(query);
+        // Wait for ngfor to update record in html view
+        // 等 ngFor 更新
+        pWaitFor(() =>
+        {
+            return document.getElementById('hy-history-item-' + query) == null
+        }).then(() =>
+        {
+            // Search
+            // 查询
+            this.onClickHistory(query);
+        });
     }
 
     /**
