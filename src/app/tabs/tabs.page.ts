@@ -26,6 +26,11 @@ export class TabsPage
      */
     private onTabChange(tab: string)
     {
+        // Show on main / search, not shown on settings / about
+        // 在主页或搜索页上显示, 不在设置或关于页显示
+        if (+tab < 3) this.elementCameraButton.show();
+        else this.elementCameraButton.hide();
+    }
 
     /**
      * This method is called when the html finishes loading.
