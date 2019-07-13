@@ -25,7 +25,11 @@ const STORAGE_HISTORY = "history"; // 查询垃圾名历史
 const CARD_TEMPLATE = "<ion-card id='hy-card-%{subtitle}' %{class}><ion-card-header>" +
     "<ion-card-subtitle>%{subtitle}</ion-card-subtitle>" +
     "<ion-card-title>%{title}</ion-card-title></ion-card-header>%{content-html}</ion-card>";
+
 const CARD_CONTENT_TEMPLATE = "<ion-card-content>%{content}</ion-card-content>";
+
+const CARD_LOADING = "<ion-card><ion-spinner name='crescent' class='hy-card-spinner' " +
+    "id='hy-loading-%{}' color='primary'></ion-spinner></ion-card>";
 
 @Component({
     selector: 'app-tab2',
