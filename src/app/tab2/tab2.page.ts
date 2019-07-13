@@ -220,7 +220,8 @@ export class Tab2Page
     private static createCard(subtitle:string, title:string, content?:string, _class?:string)
     {
         return this.createElementFromHtmlString(CARD_TEMPLATE
-            .replace("%{subtitle}", subtitle)
+            .replace("%{subtitle}", subtitle) // For ID
+            .replace("%{subtitle}", subtitle) // For subtitle
             .replace("%{title}", title)
             .replace("%{content-html}", content == null ? "" :
                 CARD_CONTENT_TEMPLATE.replace("%{content}", content))
