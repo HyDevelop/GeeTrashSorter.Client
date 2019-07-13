@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import pWaitFor from 'p-wait-for';
 
 @Component({
     selector: 'app-tabs',
@@ -26,10 +27,16 @@ export class TabsPage
      */
     private onTabChange(tab: string)
     {
-        // Show on main / search, not shown on settings / about
-        // 在主页或搜索页上显示, 不在设置或关于页显示
-        if (+tab < 3) this.elementCameraButton.show();
-        else this.elementCameraButton.hide();
+        // Wait for page to finish loading
+        // 等页面加载完
+        pWaitFor(() => this.elementCameraButton != null).then(() =>
+        {
+            // Show on main / search, not shown on settings / about
+            // 在主页或搜索页上显示, 不在设置或关于页显示
+            if (+tab < 3) this.elementCameraButton.show();
+            else this.elementCameraButton.hide();
+        });
+
     }
 
     /**
