@@ -3,8 +3,8 @@ import {Storage} from '@ionic/storage';
 import pWaitFor from 'p-wait-for';
 
 // TODO: Add splash
-// TODO: Closable card
 // TODO: Add some ng-Fx
+// TODO: Blocks clicks before one result successfully loads.
 
 // API Base URL
 // API 基础链接 TODO: 添加北京
