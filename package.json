@@ -92,9 +92,7 @@
         "OKHTTP_VERSION": "3.10.0"
       },
       "cordova-clipboard": {},
-      "cordova-plugin-camera": {
-        "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      }
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "ios",

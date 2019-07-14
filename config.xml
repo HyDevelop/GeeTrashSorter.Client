@@ -97,7 +97,7 @@
         <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
             <string>图像识别 - 拍照</string>
         </config-file>
-        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
             <string>图像识别 - 从相册导入</string>
         </edit-config>
     </platform>
