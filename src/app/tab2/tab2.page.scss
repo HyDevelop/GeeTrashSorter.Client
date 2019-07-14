@@ -1,19 +1,4 @@
 
-// Disable android header shadow
-// 关掉安卓的标题框阴影
-ion-header.hy-custom.md:after
-{
-    height: 0 !important;
-    background-image: none !important;
-}
-
-// Add space after ios header
-// 苹果标题框下面空出空间
-ion-header.hy-custom.ios
-{
-    margin-bottom: 8px !important;
-}
-
 // Remove top margin from ios cards
 // 移除苹果卡片上面的空间
 ion-card.ios.hy-list-card
