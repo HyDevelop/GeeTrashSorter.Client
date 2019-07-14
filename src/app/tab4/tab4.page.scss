@@ -19,3 +19,10 @@ sui-tabset div.hy-sui-tabs
 {
     width: 0;
 }
+
+// Remove borders from tab contents
+// 移除标签页内容外框
+.hy-sui-tab-content
+{
+    border: none;
+}
