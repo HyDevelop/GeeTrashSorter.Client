@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Tab2Page} from './tab2.page';
+import {Clipboard} from '@ionic-native/clipboard/ngx';
 
 @NgModule({
     imports: [
@@ -11,6 +12,9 @@ import {Tab2Page} from './tab2.page';
         CommonModule,
         FormsModule,
         RouterModule.forChild([{path: '', component: Tab2Page}])
+    ],
+    providers: [
+        Clipboard
     ],
     declarations: [Tab2Page]
 })
