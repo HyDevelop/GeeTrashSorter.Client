@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 
+// TODO: Configurable camera options
+
 @Component({
     selector: 'app-tabs',
     templateUrl: 'tabs.page.html',
@@ -63,14 +65,16 @@ export class TabsPage
         (
             (imageData) =>
             {
-                console.log(imageData);
+                alert(imageData);
+
                 // imageData is either a base64 encoded string or a file URI
                 // If it's base64 (DATA_URL):
                 let base64Image = 'data:image/jpeg;base64,' + imageData;
             },
             (err) =>
             {
-                console.log(err);
+                alert(err);
+
                 // TODO: Properly handle error
             }
         );
