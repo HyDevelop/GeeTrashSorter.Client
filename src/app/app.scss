@@ -32,7 +32,7 @@ ion-title.subtitle
 ion-searchbar
 {
     text-align: center;
-}   
+}
 
 // Disable android header shadow
 // 关掉安卓的标题框阴影
@@ -47,4 +47,15 @@ ion-header.hy-custom.md:after
 ion-header.hy-custom.ios
 {
     margin-bottom: 8px !important;
+}
+
+// Center semantic tabs
+// SUI 标签居中
+sui-tabset div a:first-child
+{
+    margin-left: auto;
+}
+sui-tabset div a:last-child
+{
+    margin-right: auto;
 }
