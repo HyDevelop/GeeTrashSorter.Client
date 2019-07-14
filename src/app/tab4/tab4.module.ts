@@ -4,13 +4,15 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Tab4Page} from './tab4.page';
+import {SuiModule} from 'ng2-semantic-ui';
 
 @NgModule({
     imports: [
         IonicModule,
         CommonModule,
         FormsModule,
-        RouterModule.forChild([{path: '', component: Tab4Page}])
+        RouterModule.forChild([{path: '', component: Tab4Page}]),
+        SuiModule
     ],
     declarations: [Tab4Page]
 })
