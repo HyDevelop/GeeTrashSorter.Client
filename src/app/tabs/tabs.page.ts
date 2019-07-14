@@ -54,7 +54,6 @@ export class TabsPage
             quality: 100,
             destinationType: this.camera.DestinationType.DATA_URL,
             sourceType: this.camera.PictureSourceType.CAMERA,
-            allowEdit: true,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
             cameraDirection: this.camera.Direction.BACK,
