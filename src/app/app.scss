@@ -59,3 +59,11 @@ sui-tabset div a:last-child
 {
     margin-right: auto;
 }
+
+// Align donation img side by side
+// 捐赠二维码横向排版
+.hy-donation-img
+{
+    width:50%;
+    display: inline-block;
+}
