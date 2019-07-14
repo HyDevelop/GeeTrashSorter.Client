@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {Camera} from '@ionic-native/camera/ngx';
+import {SuiModule} from 'ng2-semantic-ui';
 
 // Storage
 import { IonicStorageModule } from '@ionic/storage';
@@ -21,7 +22,8 @@ import { IonicStorageModule } from '@ionic/storage';
         BrowserModule,
         IonicModule.forRoot(),
         IonicStorageModule.forRoot(),
-        AppRoutingModule
+        AppRoutingModule,
+        SuiModule
     ],
     providers: [
         StatusBar,
