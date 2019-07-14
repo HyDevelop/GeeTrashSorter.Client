@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {Storage} from '@ionic/storage';
 import pWaitFor from 'p-wait-for';
 import {ActionSheetController} from '@ionic/angular';
+import {Clipboard} from '@ionic-native/clipboard/ngx';
 
 // TODO: Add splash
 // TODO: Add some ng-Fx
@@ -70,7 +71,8 @@ export class Tab2Page
 
     public constructor(
         private storage: Storage,
-        private actionSheetController: ActionSheetController)
+        private actionSheetController: ActionSheetController,
+        private clipboard: Clipboard)
     {
         // Obtain search history
         // 获取搜索历史
