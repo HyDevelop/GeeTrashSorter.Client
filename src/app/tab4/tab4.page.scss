@@ -1,11 +1,16 @@
 
-// Remove tab block borders
-// 移除标签栏外框
+
 sui-tabset div.hy-sui-tabs
 {
+    // Remove tab block borders
+    // 移除标签栏外框
     border-top: 0;
     border-left: 0;
     border-right: 0;
+
+    // Colorize it
+    // 染色
+    background-color: #fafeff;
 }
 
 // Remove individual tab borders
