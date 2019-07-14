@@ -2,7 +2,7 @@
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>极分类</name>
     <description>识图垃圾分类助手</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="admin@moecraft.cc" href="http://hydev.org/">HyDEV 开发组</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
