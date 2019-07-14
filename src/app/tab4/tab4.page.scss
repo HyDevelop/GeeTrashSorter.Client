@@ -27,4 +27,23 @@ sui-tabset div.hy-sui-tabs
     border: none;
     box-shadow: none;
     height: 100%;
+    text-align: center;
+}
+
+// Version text
+// 版本号
+#hy-about-version
+{
+
+}
+
+#hy-about-gts-logo
+{
+    height: 400px;
+    box-shadow: 0 0 6px 2px black;
+}
+
+#hy-about-gts-logo h2
+{
+    padding-top: 50%;
 }
