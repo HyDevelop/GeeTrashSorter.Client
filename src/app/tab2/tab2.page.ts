@@ -380,7 +380,7 @@ export class Tab2Page
                         let content = cardNode.getAttribute("hy-subtitle") + "是" +
                                 cardNode.getAttribute("hy-title") + "!\n" +
                                 cardNode.getAttribute("hy-content");
-                        console.log(content);
+                        this.clipboard.copy(content);
                     }
                 },
                 {
