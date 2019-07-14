@@ -1,9 +1,16 @@
 
-// Style tabs
-// 标签样式
+// Remove tab block borders
+// 移除标签栏外框
 sui-tabset div.hy-sui-tabs
 {
     border-top: 0;
     border-left: 0;
     border-right: 0;
+}
+
+// Remove individual tab borders
+// 移除标签外框
+.ui.menu.hy-sui-tabs .item:before
+{
+    width: 0;
 }
