@@ -39,3 +39,11 @@ export class AppComponent
         });
     }
 }
+
+/**
+ * Constants
+ * 全局变量
+ */
+export class Constants
+{
+}
