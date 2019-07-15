@@ -106,7 +106,7 @@ export class Tab2Page
      * This method is executed when user searches.
      * 用户搜索事件
      */
-    private onSearchBarEnter()
+    public onSearchBarEnter()
     {
         // Obtain input text
         // 获取输入内容
