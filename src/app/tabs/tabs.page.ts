@@ -24,7 +24,8 @@ export class TabsPage
      */
     private syncedCurrentTab: string = "tab1";
 
-    constructor(private camera: Camera)
+    constructor(public router: Router,
+                private camera: Camera)
     {
         // Constructs itself, good job!
     }
