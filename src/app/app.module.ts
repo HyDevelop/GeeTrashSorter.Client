@@ -10,9 +10,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {Camera} from '@ionic-native/camera/ngx';
+import {Base64ToGallery} from '@ionic-native/base64-to-gallery/ngx';
 
 // Storage
-import { IonicStorageModule } from '@ionic/storage';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
     declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { IonicStorageModule } from '@ionic/storage';
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         IonicStorageModule,
-        Camera
+        Camera,
+        Base64ToGallery
     ],
     bootstrap: [AppComponent]
 })
