@@ -7,9 +7,9 @@ export class Constants
 {
     /**
      * API Base URL
-     * API 基础链接 TODO: 添加北京
+     * API 基础链接
      */
-    public static BASE_URL = 'http://trash.hydev.org/shanghai?name=';
+    public static BASE_URL = 'http://trash.hydev.org/';
 
     /**
      * Cross site proxy

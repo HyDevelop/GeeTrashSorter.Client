@@ -211,7 +211,8 @@ export class Tab2Page
                 target.parentNode.insertBefore(element, target.nextSibling);
             }
         };
-        request.open('GET', Constants.CORS_PROXY + Constants.BASE_URL + text, true);
+        // TODO: 添加设置地区
+        request.open('GET', Constants.CORS_PROXY + Constants.BASE_URL + "shanghai?name=" + text, true);
         request.send('');
     }
 
