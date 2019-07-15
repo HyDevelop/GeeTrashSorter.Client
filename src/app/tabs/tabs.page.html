@@ -1,4 +1,4 @@
-<ion-tabs (ionTabsDidChange)="onTabChange($event.tab)">
+<ion-tabs (ionTabsDidChange)="onTabChange($event.tab)" id="hy-tabs">
     <ion-card *ngIf="+syncedCurrentTab.replace('tab', '') <= 2"
               (click)="getPicture()"
               mode="ios" button="true" color="primary" id="hy-camera-button">
