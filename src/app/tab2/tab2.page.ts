@@ -4,6 +4,7 @@ import pWaitFor from 'p-wait-for';
 import {ActionSheetController} from '@ionic/angular';
 import {Clipboard} from '@ionic-native/clipboard/ngx';
 import {Constants} from '../constants';
+import {Utils} from '../utils';
 
 // TODO: Add splash
 // TODO: Add some ng-Fx
@@ -185,7 +186,7 @@ export class Tab2Page
 
         // Show loading
         // 显示加载中
-        let loading = Tab2Page.toElement(CARD_LOADING.replace('%{subtitle}', text));
+        let loading = Utils.toElement(CARD_LOADING.replace('%{subtitle}', text));
         target.parentNode.insertBefore(loading, target.nextSibling);
 
         // Keep instance
@@ -265,7 +266,7 @@ export class Tab2Page
      */
     private createCard(query: string, subtitle: string, title: string, content?: string, _class?: string)
     {
-        let node = Tab2Page.toElement(CARD_TEMPLATE
+        let node = Utils.toElement(CARD_TEMPLATE
             .replace('%{query}', query)
             .replace('%{subtitle}', subtitle)
             .replace('%{title}', title)
@@ -287,19 +288,6 @@ export class Tab2Page
         }
 
         return node;
-    }
-
-    /**
-     * Create DOM element from html string
-     * 从 HTML 字符串创建 DOM 节点
-     *
-     * @param htmlString Html string
-     */
-    private static toElement(htmlString)
-    {
-        let div = document.createElement('div');
-        div.innerHTML = htmlString.trim();
-        return div.firstChild;
     }
 
     /**
