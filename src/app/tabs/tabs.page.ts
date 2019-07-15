@@ -73,6 +73,27 @@ export class TabsPage
                 // imageData is either a base64 encoded string or a file URI
                 // If it's base64 (DATA_URL):
                 let base64Image = 'data:image/jpeg;base64,' + imageData;
+
+                // Keep instance
+                // 保留实例
+                let instance = this;
+
+                // Send to image recognition api
+                // 发送到识图 API
+                let request = new XMLHttpRequest();
+                request.onreadystatechange = function()
+                {
+                    // Process results
+                    // 处理结果
+                    if (request.readyState == 4)
+                    {
+                        alert(request.responseText);
+
+                        instance.router.navigateByUrl("/tabs/tab2");
+                    }
+                };
+                request.open('GET', Constants.CORS_PROXY + Constants.BASE_URL + "image-recognition", true);
+                request.send(base64Image);
             },
             (err) =>
             {
