@@ -10,10 +10,6 @@ import {Utils} from '../utils';
 // TODO: Add some ng-Fx
 // TODO: Share
 
-// Storage key constant
-// 数据库键名
-const STORAGE_HISTORY = 'history'; // 查询垃圾名历史
-
 // Html template for cards
 // 卡片模板
 const CARD_TEMPLATE = '<ion-card id=\'hy-card-%{query}\' class=\'hy-list-card %{class}\'>' +
@@ -70,13 +66,13 @@ export class Tab2Page
     {
         // Obtain search history
         // 获取搜索历史
-        storage.get(STORAGE_HISTORY).then(value =>
+        storage.get(Constants.STORAGE_HISTORY).then(value =>
         {
             // Initialize value if not already
             // 初始化数值
             if (value == null)
             {
-                storage.set(STORAGE_HISTORY, value = ['芒果干', '湿纸巾', '电池']);
+                storage.set(Constants.STORAGE_HISTORY, value = ['芒果干', '湿纸巾', '电池']);
             }
 
             // Assign result to the displaying array of ngFor
@@ -149,7 +145,7 @@ export class Tab2Page
 
         // Sync to storage
         // 同步到数据库
-        this.storage.set(STORAGE_HISTORY, this.syncedItemListArray);
+        this.storage.set(Constants.STORAGE_HISTORY, this.syncedItemListArray);
     }
 
     /**

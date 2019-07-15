@@ -16,4 +16,13 @@ export class Constants
      * 跨站脚本代理 TODO: 写自己的代理
      */
     public static CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+
+    // Storage key constant
+    // 数据库键名
+
+    /**
+     * Searched trash name history
+     * 查询垃圾名历史
+     */
+    public static STORAGE_HISTORY = 'history';
 }
