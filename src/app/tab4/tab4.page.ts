@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Base64ToGallery} from '@ionic-native/base64-to-gallery/ngx';
-import image2base64 from 'image-to-base64';
+//import image2base64 from 'image-to-base64';
 import {ActionSheetController, ToastController} from '@ionic/angular';
 
 @Component({
@@ -36,7 +36,7 @@ export class Tab4Page
                     icon: 'save',
                     handler: () =>
                     {
-                        image2base64(event.target.getAttribute("src")).then(base64 =>
+                        /*image2base64(event.target.getAttribute("src")).then(base64 =>
                         {
                             this.base64ToGallery.base64ToGallery(base64).then(result =>
                             {
@@ -46,7 +46,7 @@ export class Tab4Page
                         {
                             // TODO: Remove debug error handling
                             alert(error);
-                        });
+                        });*/
                     }
                 },
                 {
