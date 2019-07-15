@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {Constants} from '../constants';
+import {Router} from '@angular/router';
 
 // TODO: Configurable camera options
 
