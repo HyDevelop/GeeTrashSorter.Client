@@ -21,7 +21,8 @@ export class AppComponent
         private uniqueDeviceID: UniqueDeviceID
     )
     {
-        this.initializeApp();
+        this.initStorage();
+        this.initApp();
     }
 
     /**
@@ -52,7 +53,7 @@ export class AppComponent
      * Called when the app initializes
      * 初始化应用
      */
-    private initializeApp()
+    private initApp()
     {
         this.platform.ready().then(() =>
         {
