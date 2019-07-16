@@ -1,4 +1,5 @@
 import {Constants} from './constants';
+import {Storage} from '@ionic/storage';
 
 /**
  * Utility class
@@ -40,7 +41,7 @@ export class Utils
 
                 // Store in database
                 // 存入数据库
-                storage.setItem("baidu-api-access", text);
+                storage.set("baidu-api-access", text);
             })
             .catch(console.error);
         })

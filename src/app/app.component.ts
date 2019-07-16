@@ -34,14 +34,14 @@ export class AppComponent
         // Check if storage is already initialized.
         // 检查是否已经初始化过了
         // TODO: Better error handling
-        if (this.storage.getItem("info-udid") == null)
+        if (this.storage.get("info-udid") == null)
         {
             // Obtain device UDID if not found
             // 获取设备 UDID
             this.uniqueDeviceID.get().then(uuid =>
             {
                 console.log(uuid);
-                this.storage.setItem("info-udid", uuid);
+                this.storage.set("info-udid", uuid);
             })
             .catch(err => console.log(err));
 
@@ -49,11 +49,11 @@ export class AppComponent
             {
                 // Store device platform
                 // 保存设备系统
-                this.storage.setItem("info-platform", this.platform.platforms().toString());
+                this.storage.set("info-platform", this.platform.platforms().toString());
 
                 // Store device width and height
                 // 保存设备长宽
-                this.storage.setItem("info-width-height", this.platform.width() + "*" + this.platform.height());
+                this.storage.set("info-width-height", this.platform.width() + "*" + this.platform.height());
             });
 
             // Update Baidu api
