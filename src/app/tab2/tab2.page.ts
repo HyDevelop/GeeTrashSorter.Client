@@ -70,6 +70,10 @@ export class Tab2Page
         private actionSheetController: ActionSheetController,
         private clipboard: Clipboard)
     {
+        // Set instance
+        // 赋值实例
+        Tab2Page.instance = this;
+
         // Obtain search history
         // 获取搜索历史
         storage.get(Constants.STORAGE_HISTORY).then(value =>
