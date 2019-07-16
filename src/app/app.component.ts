@@ -36,32 +36,40 @@ export class AppComponent
         // TODO: Better error handling
         this.storageValid().then(valid =>
         {
-            if (!valid)
+            if (valid) return;
+
+            // Create variable
+            // 创建变量
+            let deviceInfo = new DeviceInfo();
+
+            // Obtain device UDID if not found
+            // 获取设备 UDID
+            this.uniqueDeviceID.get().then(uuid =>
             {
-                // Obtain device UDID if not found
-                // 获取设备 UDID
-                this.uniqueDeviceID.get().then(uuid =>
-                {
-                    console.log(uuid);
-                    this.storage.set("info-udid", uuid);
-                })
-                    .catch(err => console.log(err));
+                alert(uuid);
+                deviceInfo.udid = uuid;
+            })
+            .catch(err => console.log(err));
 
-                this.platform.ready().then(() =>
-                {
-                    // Store device platform
-                    // 保存设备系统
-                    this.storage.set("info-platform", this.platform.platforms().toString());
+            this.platform.ready().then(() =>
+            {
+                // Store device platform
+                // 保存设备系统
+                deviceInfo.platform = this.platform.platforms().toString();
 
-                    // Store device width and height
-                    // 保存设备长宽
-                    this.storage.set("info-width-height", this.platform.width() + "*" + this.platform.height());
-                });
+                // Store device width and height
+                // 保存设备长宽
+                deviceInfo.width = this.platform.width();
+                deviceInfo.height = this.platform.height();
+            });
 
-                // Update Baidu api
-                // 初始化百度 API
-                Utils.updateBaiduApiKey(this.storage);
-            }
+            // Store to storage
+            // 保存到数据库
+            this.storage.set("info", deviceInfo);
+
+            // Update Baidu api
+            // 初始化百度 API
+            Utils.updateBaiduApiKey(this.storage);
         });
     }
 
@@ -79,9 +87,7 @@ export class AppComponent
             {
                 // Check if all keys exists.
                 // 检查是否所有键存在
-                if (keys.indexOf("info-udid") < 0) resolve(false);
-                if (keys.indexOf("info-platform") < 0) resolve(false);
-                if (keys.indexOf("info-width-height") < 0) resolve(false);
+                if (keys.indexOf("info") < 0) resolve(false);
                 if (keys.indexOf("baidu-api-access") < 0) resolve(false);
                 resolve(true);
             });
@@ -108,4 +114,16 @@ export class AppComponent
             this.splashScreen.hide();
         });
     }
+}
+
+/**
+ * Device information
+ * 设备信息类
+ */
+export class DeviceInfo
+{
+    constructor(public udid?: string,
+                public platform?: string,
+                public width?: number,
+                public height?: number) {}
 }

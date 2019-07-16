@@ -1,5 +1,6 @@
 import {Constants} from './constants';
 import {Storage} from '@ionic/storage';
+import {DeviceInfo} from './app.component';
 
 /**
  * Utility class
@@ -30,20 +31,43 @@ export class Utils
     {
         alert("updating");
 
-        // Fetch http request
-        // 获取请求
-        fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST"}).then(response =>
+        // Get device info
+        // 获取设备信息
+        storage.get("info").then(infoString =>
         {
-            // Get response text
-            // 获取回复的文字
-            response.text().then(text =>
-            {
-                // TODO: Remove debug output, better handle errors
-                alert(text);
+            alert(infoString.toString());
 
-                // Store in database
-                // 存入数据库
-                storage.set("baidu-api-access", text);
+            let info: DeviceInfo = JSON.parse(infoString);
+
+            alert(info);
+
+            // Fetch http request
+            // 获取请求
+            fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access",
+            {
+                method: "POST",
+                headers:
+                {
+                    "udid": info.udid,
+                    "platform": info.platform,
+                    "width": "" + info.width,
+                    "height": "" + info.height
+                }
+            })
+            .then(response =>
+            {
+                // Get response text
+                // 获取回复的文字
+                response.text().then(text =>
+                {
+                    // TODO: Remove debug output, better handle errors
+                    alert(text);
+
+                    // Store in database
+                    // 存入数据库
+                    storage.set("baidu-api-access", text);
+                })
+                .catch(alert);
             })
             .catch(alert);
         })
