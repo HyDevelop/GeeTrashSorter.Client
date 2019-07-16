@@ -1,3 +1,4 @@
+import {Constants} from './constants';
 
 /**
  * Utility class
@@ -18,4 +19,31 @@ export class Utils
         return div.firstChild;
     }
 
+    /**
+     * Update baidu api access token
+     * 更新百度 API 访问
+     *
+     * @param storage 存储
+     */
+    public static updateBaiduApiKey(storage: Storage)
+    {
+        // Fetch http request
+        // 获取请求
+        fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST"}).then(response =>
+        {
+            // Get response text
+            // 获取回复的文字
+            response.text().then(text =>
+            {
+                // TODO: Remove debug output, better handle errors
+                alert(text);
+
+                // Store in database
+                // 存入数据库
+                storage.setItem("baidu-api-access", text);
+            })
+            .catch(console.error);
+        })
+        .catch(console.error);
+    }
 }
