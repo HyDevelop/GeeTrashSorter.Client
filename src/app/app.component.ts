@@ -65,7 +65,7 @@ export class AppComponent
 
             // Store to storage
             // 保存到数据库
-            this.storage.set("info", deviceInfo);
+            this.storage.set("info", JSON.stringify(deviceInfo));
 
             // Update Baidu api
             // 初始化百度 API
