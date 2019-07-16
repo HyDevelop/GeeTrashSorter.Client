@@ -4,7 +4,6 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
-import {updateBinding} from '@angular/core/src/render3/bindings';
 import {Utils} from './utils';
 
 @Component({
@@ -31,17 +30,27 @@ export class AppComponent
      */
     private initStorage()
     {
-        // Obtain device UDID if not found
-        // 获取设备 UDID
+        // Check if storage is already initialized.
+        // 检查是否已经初始化过了
         // TODO: Better error handling
         if (this.storage.getItem("info-udid") == null)
         {
+            // Obtain device UDID if not found
+            // 获取设备 UDID
             this.uniqueDeviceID.get().then(uuid =>
             {
                 console.log(uuid);
                 this.storage.setItem("info-udid", uuid);
+            })
+            .catch(err => console.log(err));
 
-            }).catch(err => console.log(err));
+            this.platform.ready().then(() =>
+            {
+                // Store device platform
+                // 保存设备系统
+                this.storage.setItem("info-platform", this.platform.platforms().toString());
+
+            });
 
             // Update Baidu api
             // 初始化百度 API
