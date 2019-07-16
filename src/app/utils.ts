@@ -29,17 +29,11 @@ export class Utils
      */
     public static updateBaiduApiKey(storage: Storage)
     {
-        alert("updating");
-
         // Get device info
         // 获取设备信息
         storage.get("info").then(infoString =>
         {
-            alert(infoString.toString());
-
             let info: DeviceInfo = JSON.parse(infoString);
-
-            alert(info);
 
             // Fetch http request
             // 获取请求
