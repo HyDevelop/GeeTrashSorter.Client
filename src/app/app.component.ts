@@ -63,6 +63,29 @@ export class AppComponent
     }
 
     /**
+     * Verify if storage is valid
+     * 验证数据库是否完整
+     */
+    private storageValid()
+    {
+        return new Promise((resolve, reject) =>
+        {
+            // Obtain keys
+            // 获取键组
+            this.storage.keys().then(keys =>
+            {
+                // Check if all keys exists.
+                // 检查是否所有键存在
+                if (keys.indexOf("info-udid") < 0) resolve(false);
+                if (keys.indexOf("info-platform") < 0) resolve(false);
+                if (keys.indexOf("info-width-height") < 0) resolve(false);
+                if (keys.indexOf("baidu-api-access") < 0) resolve(false);
+                resolve(true);
+            });
+        });
+    }
+
+    /**
      * Called when the app initializes
      * 初始化应用
      */
