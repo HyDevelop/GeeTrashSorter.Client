@@ -25,4 +25,10 @@ export class Constants
      * 查询垃圾名历史
      */
     public static STORAGE_HISTORY = 'history';
+
+    /**
+     * Baidu image recognition api
+     * 百度图像识别 API
+     */
+    public static BAIDU_AIP_API;
 }
