@@ -1,3 +1,4 @@
+import * as pWaitFor from 'p-wait-for';
 
 /**
  * Constants
@@ -27,8 +28,37 @@ export class Constants
     public static STORAGE_HISTORY = 'history';
 
     /**
-     * Baidu image recognition api
-     * 百度图像识别 API
+     * Baidu image recognition api key information
+     * 百度图像识别 API Key
      */
     public static BAIDU_AIP_API;
+
+    /**
+     * Ensure everything is initialized
+     * 确保初始化完成
+     */
+    public static ensureInitialized(callback)
+    {
+        if (this.BAIDU_AIP_API == null)
+        {
+            // Get baidu image recognition api keys
+            // 获取百度识图 API Key
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function()
+            {
+                // Process results
+                // 处理结果
+                if (request.readyState == 4)
+                {
+                    let split = request.responseText.split(";");
+
+                    callback();
+                }
+                // TODO: Handle error
+            };
+            request.open('POST', Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-secret", true);
+            request.send('');
+        }
+        else callback();
+    }
 }
