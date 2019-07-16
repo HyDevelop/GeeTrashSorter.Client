@@ -4,8 +4,6 @@ import {Constants} from '../constants';
 import {Router} from '@angular/router';
 import {Tab2Page} from '../tab2/tab2.page';
 import pWaitFor from 'p-wait-for';
-import * as Ahdin from 'ahdin';
-import {CompressOptions} from 'ahdin';
 
 // TODO: Configurable camera options
 
@@ -95,51 +93,3 @@ export class TabsPage
         });
     }
 }
-
-/* Deprecated:
- *
-             // Convert to blob
-             // 转换为 Blob
-             fetch(base64Image).then(res => res.blob()).then(blob =>
-             {
-                alert(blob);
-
-                // Compress
-                // 压缩
-                Ahdin.compress(blob, {maxHeight: 720, outputFormat: 'jpeg', quality: 0.5}).then(compressedBlob =>
-                {
-                    alert(compressedBlob);
-
-                    // Convert back to base64
-                    // 转换回 Base64
-                    var reader = new FileReader();
-                    reader.readAsDataURL(blob);
-                    reader.onloadend = function()
-                    {
-                        base64Image = <string> reader.result;
-
-                        alert(base64Image);
-
-                        // Send to image recognition api
-                        // 发送到识图 API
-                        let request = new XMLHttpRequest();
-                        request.onreadystatechange = function()
-                        {
-                            // Process results
-                            // 处理结果
-                            if (request.readyState == 4)
-                            {
-                                alert(request.responseText);
-
-                                pWaitFor(() => Tab2Page.instance != null);
-
-                                Tab2Page.instance.setSearchContent(request.responseText);
-                                Tab2Page.instance.onSearchBarEnter();
-                            }
-                        };
-                        request.open('POST', Constants.CORS_PROXY + Constants.BASE_URL + "image-recognition", true);
-                        request.send(base64Image);
-                    }
-                });
-            });
- */
