@@ -9,7 +9,7 @@ export class Constants
      * API Base URL
      * API 基础链接
      */
-    public static BASE_URL = 'http://trash.hydev.org/';
+    public static BASE_URL = 'http://trash.hydev.org:24019/';
 
     /**
      * Cross site proxy
