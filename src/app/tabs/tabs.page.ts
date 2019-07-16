@@ -2,6 +2,10 @@ import {Component} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {Constants} from '../constants';
 import {Router} from '@angular/router';
+import {Tab2Page} from '../tab2/tab2.page';
+import pWaitFor from 'p-wait-for';
+import * as Ahdin from 'ahdin';
+import {CompressOptions} from 'ahdin';
 
 // TODO: Configurable camera options
 
@@ -52,6 +56,10 @@ export class TabsPage
 
     private getPicture()
     {
+        // Keep instance
+        // 保留实例
+        let instance = this;
+
         // Create options
         // 创建配置
         const options: CameraOptions =
@@ -64,43 +72,74 @@ export class TabsPage
             cameraDirection: this.camera.Direction.BACK,
         };
 
-        this.camera.getPicture(options).then
-        (
-            (imageData) =>
-            {
-                alert(imageData);
+        // Take picture
+        // 拍照
+        this.camera.getPicture(options).then(imageData =>
+        {
+            alert(imageData);
 
-                // imageData is either a base64 encoded string or a file URI
-                // If it's base64 (DATA_URL):
-                let base64Image = 'data:image/jpeg;base64,' + imageData;
+            // Show loading
+            // TODO: 显示加载界面
+            instance.router.navigateByUrl("/tabs/tab2");
 
-                // Keep instance
-                // 保留实例
-                let instance = this;
+            // Add url prefix
+            // 添加 URL 前缀
+            let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-                // Send to image recognition api
-                // 发送到识图 API
-                let request = new XMLHttpRequest();
-                request.onreadystatechange = function()
-                {
-                    // Process results
-                    // 处理结果
-                    if (request.readyState == 4)
-                    {
-                        alert(request.responseText);
+        },
+        err =>
+        {
+            alert(err);
 
-                        instance.router.navigateByUrl("/tabs/tab2");
-                    }
-                };
-                request.open('GET', Constants.CORS_PROXY + Constants.BASE_URL + "image-recognition", true);
-                request.send(base64Image);
-            },
-            (err) =>
-            {
-                alert(err);
-
-                // TODO: Properly handle error
-            }
-        );
+            // TODO: Properly handle error
+        });
     }
 }
+
+/* Deprecated:
+ *
+             // Convert to blob
+             // 转换为 Blob
+             fetch(base64Image).then(res => res.blob()).then(blob =>
+             {
+                alert(blob);
+
+                // Compress
+                // 压缩
+                Ahdin.compress(blob, {maxHeight: 720, outputFormat: 'jpeg', quality: 0.5}).then(compressedBlob =>
+                {
+                    alert(compressedBlob);
+
+                    // Convert back to base64
+                    // 转换回 Base64
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function()
+                    {
+                        base64Image = <string> reader.result;
+
+                        alert(base64Image);
+
+                        // Send to image recognition api
+                        // 发送到识图 API
+                        let request = new XMLHttpRequest();
+                        request.onreadystatechange = function()
+                        {
+                            // Process results
+                            // 处理结果
+                            if (request.readyState == 4)
+                            {
+                                alert(request.responseText);
+
+                                pWaitFor(() => Tab2Page.instance != null);
+
+                                Tab2Page.instance.setSearchContent(request.responseText);
+                                Tab2Page.instance.onSearchBarEnter();
+                            }
+                        };
+                        request.open('POST', Constants.CORS_PROXY + Constants.BASE_URL + "image-recognition", true);
+                        request.send(base64Image);
+                    }
+                });
+            });
+ */
