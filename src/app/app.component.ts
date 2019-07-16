@@ -21,8 +21,9 @@ export class AppComponent
 
     /**
      * Called when the app initializes
+     * 初始化应用
      */
-    initializeApp()
+    private initializeApp()
     {
         this.platform.ready().then(() =>
         {
