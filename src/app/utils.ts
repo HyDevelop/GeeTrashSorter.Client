@@ -28,6 +28,8 @@ export class Utils
      */
     public static updateBaiduApiKey(storage: Storage)
     {
+        alert("updating");
+
         // Fetch http request
         // 获取请求
         fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST"}).then(response =>
@@ -43,8 +45,8 @@ export class Utils
                 // 存入数据库
                 storage.set("baidu-api-access", text);
             })
-            .catch(console.error);
+            .catch(alert);
         })
-        .catch(console.error);
+        .catch(alert);
     }
 }
