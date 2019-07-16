@@ -113,6 +113,17 @@ export class Tab2Page
     }
 
     /**
+     * This method sets the content in the search bar.
+     * 设置搜索框内容
+     *
+     * @param content Content
+     */
+    public setSearchContent(content: string)
+    {
+        this.syncedSearchText = content;
+    }
+
+    /**
      * This method is executed when user searches.
      * 用户搜索事件
      */
