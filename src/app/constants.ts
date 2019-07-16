@@ -31,7 +31,7 @@ export class Constants
      * Baidu image recognition api key information
      * 百度图像识别 API Key
      */
-    public static BAIDU_AIP_API;
+    public static BAIDU_API_KEY_SPLIT;
 
     /**
      * Ensure everything is initialized
@@ -39,7 +39,7 @@ export class Constants
      */
     public static ensureInitialized(callback)
     {
-        if (this.BAIDU_AIP_API == null)
+        if (this.BAIDU_API_KEY_SPLIT == null)
         {
             // Get baidu image recognition api keys
             // 获取百度识图 API Key
