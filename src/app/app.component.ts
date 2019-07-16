@@ -5,6 +5,7 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
 import {Utils} from './utils';
+import {Storage} from '@ionic/storage';
 
 @Component({
     selector: 'app-root',
