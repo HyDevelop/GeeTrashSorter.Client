@@ -30,6 +30,12 @@ const CARD_LOADING = '<ion-card><ion-spinner name=\'crescent\' class=\'hy-card-s
 export class Tab2Page
 {
     /**
+     * This instance
+     * 这个实例
+     */
+    public static instance: Tab2Page;
+
+    /**
      * Search bar element
      * 搜索框
      */
