@@ -50,6 +50,9 @@ export class AppComponent
                 // 保存设备系统
                 this.storage.setItem("info-platform", this.platform.platforms().toString());
 
+                // Store device width and height
+                // 保存设备长宽
+                this.storage.setItem("info-width-height", this.platform.width() + "*" + this.platform.height());
             });
 
             // Update Baidu api
