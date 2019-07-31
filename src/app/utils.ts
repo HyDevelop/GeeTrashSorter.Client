@@ -59,7 +59,7 @@ export class Utils
 
                     // Store in database
                     // 存入数据库
-                    storage.set("baidu-api-access", text);
+                    storage.set("baidu-api-access", text.split(":")[1]);
                 })
                 .catch(alert);
             })
