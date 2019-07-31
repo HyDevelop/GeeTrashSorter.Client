@@ -67,4 +67,23 @@ export class Utils
         })
         .catch(alert);
     }
+
+    /**
+     * Generate form body string from class.
+     * 从信息类生成表单 body 字符串.
+     *
+     * 用法:
+     *   toFormBody({'testKey': 'testData'})
+     *
+     * @param details Informational class.
+     */
+    public static toFormBody(details)
+    {
+        let formBody = [];
+        for (let property in details)
+        {
+            formBody.push(encodeURIComponent(property) + "=" + encodeURIComponent(details[property]));
+        }
+        return formBody.join("&");
+    }
 }
