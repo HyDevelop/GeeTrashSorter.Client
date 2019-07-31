@@ -1,11 +1,7 @@
 import {Component} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {Constants} from '../constants';
 import {Router} from '@angular/router';
-import {Tab2Page} from '../tab2/tab2.page';
-import pWaitFor from 'p-wait-for';
 import {Storage} from '@ionic/storage';
-import {HTTP} from '@ionic-native/http/ngx';
 import {Utils} from '../utils';
 
 // TODO: Configurable camera options
@@ -31,8 +27,7 @@ export class TabsPage
 
     constructor(public router: Router,
                 private camera: Camera,
-                private storage: Storage,
-                private http: HTTP)
+                private storage: Storage)
     {
         // Constructs itself, good job!
     }
