@@ -212,29 +212,34 @@ export class Tab2Page
 
         // Send a GET request
         // 发送 GET 请求
-        let request = new XMLHttpRequest();
-        request.onreadystatechange = function()
+        fetch(Constants.CORS_PROXY + Constants.BASE_URL + "shanghai?name=" + text, {method: "POST"})
+        .then(respose =>
         {
-            // Process results
-            // 处理结果
-            if (request.readyState == 4)
-            {
-                // Obtain element
-                // 获取对象
-                let element = instance.processHttpResponse(text, request);
+            // Obtain element
+            // 获取对象
+            let element = instance.processHttpResponse(text, request);
 
-                // Remove loading from html view
-                // 移除加载卡片
-                loading.remove();
+        })
+        .catch(alert);
+    }
 
-                // Insert result to html view
-                // 添加结果到显示
-                target.parentNode.insertBefore(element, target.nextSibling);
-            }
-        };
-        // TODO: 添加设置地区
-        request.open('GET', Constants.CORS_PROXY + Constants.BASE_URL + "shanghai?name=" + text, true);
-        request.send('');
+    /**
+     * Finish loading and show the results
+     * 加载完, 显示结果
+     *
+     * @param target History item element
+     * @param loading Loading card element
+     * @param element Result element
+     */
+    private finishLoading(target, loading, element)
+    {
+        // Remove loading from html view
+        // 移除加载卡片
+        loading.remove();
+
+        // Insert result to html view
+        // 添加结果到显示
+        target.parentNode.insertBefore(element, target.nextSibling);
     }
 
     /**
