@@ -4,6 +4,9 @@ import {Constants} from '../constants';
 import {Router} from '@angular/router';
 import {Tab2Page} from '../tab2/tab2.page';
 import pWaitFor from 'p-wait-for';
+import {Storage} from '@ionic/storage';
+import {HTTP} from '@ionic-native/http/ngx';
+import {Utils} from '../utils';
 
 // TODO: Configurable camera options
 
@@ -27,7 +30,9 @@ export class TabsPage
     private syncedCurrentTab: string = "tab1";
 
     constructor(public router: Router,
-                private camera: Camera)
+                private camera: Camera,
+                private storage: Storage,
+                private http: HTTP)
     {
         // Constructs itself, good job!
     }
@@ -54,42 +59,69 @@ export class TabsPage
 
     private getPicture()
     {
-        // Keep instance
-        // 保留实例
-        let instance = this;
-
-        // Create options
-        // 创建配置
-        const options: CameraOptions =
+        this.storage.get("baidu-api-access").then(accessToken =>
         {
-            quality: 100,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            sourceType: this.camera.PictureSourceType.CAMERA,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE,
-            cameraDirection: this.camera.Direction.BACK,
-        };
+            // Keep instance
+            // 保留实例
+            let instance = this;
 
-        // Take picture
-        // 拍照
-        this.camera.getPicture(options).then(imageData =>
-        {
-            alert(imageData);
+            // Create options
+            // 创建配置
+            const options: CameraOptions =
+            {
+                quality: 50,
+                destinationType: this.camera.DestinationType.DATA_URL,
+                sourceType: this.camera.PictureSourceType.CAMERA,
+                encodingType: this.camera.EncodingType.JPEG,
+                mediaType: this.camera.MediaType.PICTURE,
+                cameraDirection: this.camera.Direction.BACK,
+            };
 
-            // Show loading
-            // TODO: 显示加载界面
-            instance.router.navigateByUrl("/tabs/tab2");
+            // Take picture
+            // 拍照
+            this.camera.getPicture(options).then(imageData =>
+            {
+                alert(imageData);
 
-            // Add url prefix
-            // 添加 URL 前缀
-            let base64Image = 'data:image/jpeg;base64,' + imageData;
+                // Show loading
+                // TODO: 显示加载界面
+                instance.router.navigateByUrl("/tabs/tab2");
 
-        },
-        err =>
-        {
-            alert(err);
+                // Add url prefix
+                // 添加 URL 前缀
+                let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-            // TODO: Properly handle error
-        });
+                // Image recognition
+                // 图像识别
+                let request =
+                {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+                    body: Utils.toFormBody({'image': base64Image})
+                };
+
+                fetch("https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + accessToken, request)
+                .then(response =>
+                {
+                    // Get response text
+                    // 获取回复的文字
+                    response.text().then(text =>
+                    {
+                        // TODO: Remove debug output, better handle errors
+                        alert(text);
+                    })
+                    .catch(alert);
+                })
+                .catch(alert);
+            },
+            err =>
+            {
+                alert(err);
+
+                // TODO: Properly handle error
+            })
+            .catch(alert);
+        })
+        .catch(alert);
     }
 }
