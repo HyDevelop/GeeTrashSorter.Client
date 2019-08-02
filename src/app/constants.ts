@@ -7,6 +7,12 @@ import * as pWaitFor from 'p-wait-for';
 export class Constants
 {
     /**
+     * Debug or not
+     * 是否输出测试信息
+     */
+    public static DEBUG = true;
+
+    /**
      * API Base URL
      * API 基础链接
      */
