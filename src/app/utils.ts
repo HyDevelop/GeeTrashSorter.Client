@@ -86,4 +86,18 @@ export class Utils
         }
         return formBody.join("&");
     }
+
+    /**
+     * Log a debug message
+     * 输出调试日志
+     *
+     * @param text Message
+     */
+    public static debug(text)
+    {
+        if (Constants.DEBUG)
+        {
+            alert(text);
+        }
+    }
 }
