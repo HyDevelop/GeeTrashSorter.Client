@@ -239,8 +239,6 @@ export class Tab2Page
         .catch(error => finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error')));
     }
 
-
-
     /**
      * Process http api response
      * 处理 HTTP API 返回
@@ -251,23 +249,24 @@ export class Tab2Page
      */
     private processHttpResponse(query: string, data)
     {
-        // No data
-        // 没有数据
-        if (request.responseText.toLowerCase().includes('error: no data'))
-            return this.createCard(query, '发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
-
-        // Other errors
-        // 其他错误 TODO: 自动重试
-        if (request.responseText.toLowerCase().includes('error'))
+        // Some errors
+        // 发生错误
+        if (data.success == false)
         {
-            console.log(request.responseText);
+            // No data
+            // 没有数据
+            if (data.name.toLowerCase().includes('error: no data'))
+                return this.createCard(query, '发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
+
+            // Other errors
+            // 其他错误 TODO: 自动重试
+            console.log(data);
             return this.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
         }
 
         // Request success
         // 请求正常
-        let response = JSON.parse(request.responseText);
-        return this.createCard(query, response.name, response.type, response.steps, 'hy-card-success');
+        return this.createCard(query, data.name, data.type, data.steps, 'hy-card-success');
     }
 
     /**
