@@ -260,7 +260,7 @@ export class Tab2Page
 
             // Other errors
             // 其他错误 TODO: 自动重试
-            console.log(data);
+            if (Constants.DEBUG) alert(data);
             return this.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
         }
 
