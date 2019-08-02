@@ -206,57 +206,51 @@ export class Tab2Page
         let loading = Utils.toElement(CARD_LOADING.replace('%{subtitle}', text));
         target.parentNode.insertBefore(loading, target.nextSibling);
 
-        // Keep instance
-        // 保留实例
-        let instance = this;
+        /**
+         * Finish loading and show the results
+         * 加载完, 显示结果
+         *
+         * @param element Result element
+         */
+        function finishLoading(element)
+        {
+            // Remove loading from html view
+            // 移除加载卡片
+            loading.remove();
+
+            // Insert result to html view
+            // 添加结果到显示
+            target.parentNode.insertBefore(element, target.nextSibling);
+        }
 
         // Send a GET request
         // 发送 GET 请求
         fetch(Constants.CORS_PROXY + Constants.BASE_URL + "shanghai?name=" + text, {method: "POST"})
         .then(respose =>
         {
-            // Obtain element
-            // 获取对象
-            let element = instance.processHttpResponse(text, request);
-
+            respose.text().then(responseText =>
+            {
+                // Finish loading and process results
+                // 加载完, 处理然后显示结果
+                finishLoading(this.processHttpResponse(text, JSON.parse(responseText)));
+            })
+            .catch(error => finishLoading(this.createCard(text, '发生错误', '网络连接异常 (读取异常)', null, 'hy-card-error')));
         })
-        .catch(alert);
+        .catch(error => finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error')));
     }
 
-    /**
-     * Finish loading and show the results
-     * 加载完, 显示结果
-     *
-     * @param target History item element
-     * @param loading Loading card element
-     * @param element Result element
-     */
-    private finishLoading(target, loading, element)
-    {
-        // Remove loading from html view
-        // 移除加载卡片
-        loading.remove();
 
-        // Insert result to html view
-        // 添加结果到显示
-        target.parentNode.insertBefore(element, target.nextSibling);
-    }
 
     /**
      * Process http api response
      * 处理 HTTP API 返回
      *
      * @param query What the user searched
-     * @param request Http request
+     * @param data Returned data object
      * @returns Element to insert after target
      */
-    private processHttpResponse(query: string, request: XMLHttpRequest)
+    private processHttpResponse(query: string, data)
     {
-        // Some HTTP error code
-        // HTTP 错误码
-        if (request.status != 200)
-            return this.createCard(query, '发生错误', '网络连接异常', null, 'hy-card-error');
-
         // No data
         // 没有数据
         if (request.responseText.toLowerCase().includes('error: no data'))
@@ -264,7 +258,7 @@ export class Tab2Page
 
         // Other errors
         // 其他错误 TODO: 自动重试
-        if (request.responseText.includes('Error'))
+        if (request.responseText.toLowerCase().includes('error'))
         {
             console.log(request.responseText);
             return this.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
