@@ -82,17 +82,13 @@ export class TabsPage
                 // TODO: 显示加载界面
                 instance.router.navigateByUrl("/tabs/tab2");
 
-                // Add url prefix
-                // 添加 URL 前缀
-                let base64Image = 'data:image/jpeg;base64,' + imageData;
-
                 // Image recognition
                 // 图像识别
                 let request =
                 {
                     method: 'POST',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                    body: Utils.toFormBody({'image': base64Image})
+                    body: Utils.toFormBody({'image': imageData})
                 };
 
                 fetch("https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + accessToken, request)
