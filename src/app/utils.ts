@@ -34,6 +34,7 @@ export class Utils
         storage.get("info").then(infoString =>
         {
             let info: DeviceInfo = JSON.parse(infoString);
+            Utils.debug('Utils.updateBaiduApiKey():info', infoString);
 
             // Fetch http request
             // 获取请求
@@ -54,18 +55,17 @@ export class Utils
                 // 获取回复的文字
                 response.text().then(text =>
                 {
-                    // TODO: Remove debug output, better handle errors
-                    alert(text);
+                    Utils.debug('Utils.updateBaiduApiKey():response', text);
 
                     // Store in database
                     // 存入数据库
                     storage.set("baidu-api-access", text.split(":")[1]);
                 })
-                .catch(alert);
+                .catch(err => Utils.debug('Utils.updateBaiduApiKey():err1', err));
             })
-            .catch(alert);
+            .catch(err => Utils.debug('Utils.updateBaiduApiKey():err2', err));
         })
-        .catch(alert);
+        .catch(err => Utils.debug('Utils.updateBaiduApiKey():err3', err));
     }
 
     /**
