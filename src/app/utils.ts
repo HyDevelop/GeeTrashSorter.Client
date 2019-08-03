@@ -91,13 +91,17 @@ export class Utils
      * Log a debug message
      * 输出调试日志
      *
-     * @param text Message
+     * @param texts Messages
      */
-    public static debug(text)
+    public static debug(...texts: string[])
     {
         if (Constants.DEBUG)
         {
-            alert(text);
+            // Construct message
+            // 组合信息
+            let message = '';
+            for (let text in texts) message += `${text}\n`;
+            alert(message);
         }
     }
 }
