@@ -234,9 +234,17 @@ export class Tab2Page
                 // 加载完, 处理然后显示结果
                 finishLoading(this.processHttpResponse(text, JSON.parse(responseText)));
             })
-            .catch(error => finishLoading(this.createCard(text, '发生错误', '网络连接异常 (读取异常)', null, 'hy-card-error')));
+            .catch(err =>
+            {
+                finishLoading(this.createCard(text, '发生错误', '网络连接异常 (读取异常)', null, 'hy-card-error'));
+                Utils.debug('Tab2Page.onClickHistory:err1', err);
+            });
         })
-        .catch(error => finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error')));
+        .catch(err =>
+        {
+            finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error'))
+            Utils.debug('Tab2Page.onClickHistory:err2', err);
+        });
     }
 
     /**
