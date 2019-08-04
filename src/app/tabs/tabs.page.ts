@@ -108,26 +108,12 @@ export class TabsPage
                     // 获取回复的文字
                     response.text().then(text =>
                     {
-                        // Parse result as object
-                        // 反序列化结果
-                        let resultJson = JSON.parse(text);
-                        let results = [];
-
-                        // Parse json object as keyword name array
-                        // 把 JSON 结果转成关键词数组
-                        for (let i = 0; i < resultJson.result_num; i++)
-                        {
-                            let resultEntry = resultJson.result[i];
-                            if (resultEntry.score > Constants.IR_MIN_SCORE)
-                            {
-                                results.push(resultEntry.keyword);
-                            }
-                        }
+                        let keywords = Utils.parseBaiduIRApiData(text);
 
                         // Debug output
                         // 输出调试信息
                         Utils.debug('Tabs.getPicture:response', text);
-                        Utils.debug('Tabs.getPicture:results', JSON.stringify(results));
+                        Utils.debug('Tabs.getPicture:keywords', JSON.stringify(keywords));
                     })
                     .catch(alert);
                 })

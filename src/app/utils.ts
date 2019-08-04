@@ -104,4 +104,32 @@ export class Utils
             alert(message);
         }
     }
+
+    /**
+     * Parse baidu image recognition api data as keyword name array
+     * 反序列化百度识图结果为关键词数组
+     *
+     * @param response Baidu IR api response text
+     * @return string[] Keyword name array
+     */
+    public static parseBaiduIRApiData(response: string)
+    {
+        // Parse result as object
+        // 反序列化结果
+        let resultJson = JSON.parse(response);
+        let results = [];
+
+        // Parse json object as keyword name array
+        // 把 JSON 结果转成关键词数组
+        for (let i = 0; i < resultJson.result_num; i++)
+        {
+            let resultEntry = resultJson.result[i];
+            if (resultEntry.score > Constants.IR_MIN_SCORE)
+            {
+                results.push(resultEntry.keyword);
+            }
+        }
+
+        return results;
+    }
 }
