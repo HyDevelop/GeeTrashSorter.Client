@@ -100,7 +100,7 @@ export class Utils
             // Construct message
             // 组合信息
             let message = '';
-            for (let text in texts) message += `${text}\n`;
+            for (let text of texts) message += `${text}\n`;
             alert(message);
         }
     }
