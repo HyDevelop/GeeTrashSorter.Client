@@ -62,10 +62,6 @@ export class TabsPage
     {
         this.storage.get("baidu-api-access").then(accessToken =>
         {
-            // Keep instance
-            // 保留实例
-            let instance = this;
-
             // Create options
             // 创建配置
             const options: CameraOptions =
@@ -84,7 +80,7 @@ export class TabsPage
             {
                 // Show loading
                 // TODO: 显示加载界面
-                instance.router.navigateByUrl("/tabs/tab2");
+                this.router.navigateByUrl("/tabs/tab2");
 
                 // Image recognition
                 // 图像识别
@@ -101,6 +97,8 @@ export class TabsPage
                 Utils.debug('Tabs.getPicture:request', JSON.stringify(request));
                 Utils.debug('Tabs.getPicture:accessToken', accessToken);
 
+                // Fetch request
+                // 发送请求
                 fetch("https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + accessToken, request)
                 .then(response =>
                 {
@@ -114,6 +112,10 @@ export class TabsPage
                         // 输出调试信息
                         Utils.debug('Tabs.getPicture:response', text);
                         Utils.debug('Tabs.getPicture:keywords', JSON.stringify(keywords));
+
+                        // Show search entry selection menu
+                        // 显示选择搜索垃圾项菜单
+
                     })
                     .catch(alert);
                 })
