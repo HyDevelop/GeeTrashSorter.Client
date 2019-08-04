@@ -3,8 +3,14 @@ import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {Router} from '@angular/router';
 import {Storage} from '@ionic/storage';
 import {Utils} from '../utils';
+import {Constants} from '../constants';
 
 // TODO: Configurable camera options
+
+function debug(message)
+{
+    Utils.debug(message);
+}
 
 @Component({
     selector: 'app-tabs',
@@ -76,8 +82,6 @@ export class TabsPage
             // 拍照
             this.camera.getPicture(options).then(imageData =>
             {
-                alert(imageData);
-
                 // Show loading
                 // TODO: 显示加载界面
                 instance.router.navigateByUrl("/tabs/tab2");
@@ -88,8 +92,14 @@ export class TabsPage
                 {
                     method: 'POST',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                    body: Utils.toFormBody({'image': imageData})
+                    body: Utils.toFormBody({'image': <string> imageData})
                 };
+
+                // Debug output
+                // 输出调试信息
+                Utils.debug('Tabs.getPicture:imageData', imageData);
+                Utils.debug('Tabs.getPicture:request', JSON.stringify(request));
+                Utils.debug('Tabs.getPicture:accessToken', accessToken);
 
                 fetch("https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + accessToken, request)
                 .then(response =>
@@ -98,8 +108,9 @@ export class TabsPage
                     // 获取回复的文字
                     response.text().then(text =>
                     {
-                        // TODO: Remove debug output, better handle errors
-                        alert(text);
+                        // Parse result as object
+                        // 反序列化结果
+                        let resultJson = JSON.parse(text);
                     })
                     .catch(alert);
                 })
