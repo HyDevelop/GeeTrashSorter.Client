@@ -34,21 +34,11 @@ export class Utils
         storage.get("info").then(infoString =>
         {
             let info: DeviceInfo = JSON.parse(infoString);
-            Utils.debug('Utils.updateBaiduApiKey():info', infoString);
 
             // Fetch http request
             // 获取请求
-            fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access",
-            {
-                method: "POST",
-                headers:
-                {
-                    "udid": info.udid,
-                    "platform": info.platform,
-                    "width": "" + info.width,
-                    "height": "" + info.height
-                }
-            })
+            fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST",
+                headers: {"udid": info.udid, "platform": info.platform, "width": "" + info.width, "height": "" + info.height}})
             .then(response =>
             {
                 // Get response text
@@ -61,7 +51,7 @@ export class Utils
                     // 存入数据库
                     storage.set("baidu-api-access", text.split(":")[1]);
                 })
-                .catch(err => Utils.debug('Utils.updateBaiduApiKey():err1', err));
+                .catch(err => Utils.debug('Utils.updateBaiduApiKey():err1', err)); // Todo: Show errors to user
             })
             .catch(err => Utils.debug('Utils.updateBaiduApiKey():err2', err));
         })
