@@ -118,7 +118,7 @@ export class TabsPage
 
                         // Show search entry selection menu
                         // 显示选择搜索垃圾项菜单
-
+                        this.showIRActionSheet(keywords);
                     })
                     .catch(alert);
                 })
@@ -134,6 +134,7 @@ export class TabsPage
         })
         .catch(alert);
     }
+
     /**
      * Show action sheet to select image recognition result
      * 显示选择搜索垃圾项菜单
