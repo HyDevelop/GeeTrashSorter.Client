@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Storage} from '@ionic/storage';
 import {Utils} from '../utils';
 import {Constants} from '../constants';
+import {ActionSheetController} from '@ionic/angular';
 
 // TODO: Configurable camera options
 
@@ -33,7 +34,8 @@ export class TabsPage
 
     constructor(public router: Router,
                 private camera: Camera,
-                private storage: Storage)
+                private storage: Storage,
+                private actionSheetController: ActionSheetController)
     {
         // Constructs itself, good job!
     }
