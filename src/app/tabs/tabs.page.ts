@@ -5,6 +5,7 @@ import {Storage} from '@ionic/storage';
 import {Utils} from '../utils';
 import {Constants} from '../constants';
 import {ActionSheetController} from '@ionic/angular';
+import {Tab2Page} from '../tab2/tab2.page';
 
 // TODO: Configurable camera options
 
@@ -132,5 +133,42 @@ export class TabsPage
             .catch(alert);
         })
         .catch(alert);
+    }
+    /**
+     * Show action sheet to select image recognition result
+     * 显示选择搜索垃圾项菜单
+     *
+     * TODO: multi selection
+     *
+     * @param keywords List of keywords
+     */
+    private async showIRActionSheet(keywords)
+    {
+        // Create buttons array from keywords
+        // 创建按钮列表
+        let buttons = [];
+        for (let keyword of keywords)
+        {
+            buttons.push(
+            {
+                text: keyword,
+                handler: () =>
+                {
+                    // Search entry on click
+                    // 点击按钮时搜索
+                    Tab2Page.instance.setSearchContent(keyword);
+                    Tab2Page.instance.onSearchBarEnter();
+                }
+            });
+        }
+
+        // Generate card click action sheet
+        // 生成点击卡片的动作列表
+        const actionSheet = await this.actionSheetController.create(
+        {
+            header: '照片上识别出了这些物品, 要查哪个呢w?',
+            buttons: buttons
+        });
+        await actionSheet.present();
     }
 }
