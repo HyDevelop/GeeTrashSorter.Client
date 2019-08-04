@@ -46,21 +46,16 @@ export class AppComponent
             // 获取设备 UDID
             this.uniqueDeviceID.get().then(uuid =>
             {
-                alert(uuid);
-                deviceInfo.udid = uuid;
-
                 this.platform.ready().then(() =>
                 {
-                    // Store device platform
-                    // 保存设备系统
+                    // Store device platform information
+                    // 保存设备系统信息
+                    deviceInfo.udid = uuid;
                     deviceInfo.platform = this.platform.platforms().toString();
-
-                    // Store device width and height
-                    // 保存设备长宽
                     deviceInfo.width = this.platform.width();
                     deviceInfo.height = this.platform.height();
 
-                    alert("Done: " + JSON.stringify(deviceInfo));
+                    Utils.debug('AppComponent.initStorage:deviceInfo', JSON.stringify(deviceInfo));
 
                     // Store to storage
                     // 保存到数据库
@@ -70,11 +65,11 @@ export class AppComponent
                         // 初始化百度 API
                         Utils.updateBaiduApiKey(this.storage);
                     })
-                    .catch(alert);
+                    .catch(err => Utils.debug('AppComponent.initStorage:err1', err)); // Todo: Show errors to user
                 })
-                .catch(alert);
+                .catch(err => Utils.debug('AppComponent.initStorage:err2', err));
             })
-            .catch(alert);
+            .catch(err => Utils.debug('AppComponent.initStorage:err3', err));
         });
     }
 
