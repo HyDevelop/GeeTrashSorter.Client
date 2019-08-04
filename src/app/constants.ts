@@ -24,6 +24,12 @@ export class Constants
      */
     public static CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
+    /**
+     * Minimum score for an image recognition result to count
+     * 图像识别最小分数
+     */
+    public static IR_MIN_SCORE = 0.09;
+
     // Storage key constant
     // 数据库键名
 
