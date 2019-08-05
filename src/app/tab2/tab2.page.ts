@@ -267,9 +267,9 @@ export class Tab2Page
                 return this.createCard(query, '发生错误', '还没有收录它的数据', '可以尝试把这个垃圾分成更小的部分再搜索w', 'hy-card-error');
 
             // Other errors
-            // 其他错误 TODO: 自动重试
-            if (Constants.DEBUG) alert(data);
-            return this.createCard(query, '发生错误', '未知错误, 请重试', null, 'hy-card-error');
+            // 其他错误
+            Utils.debug('Tab2Page.processHttpResponse:err1', JSON.stringify(data));
+            return this.createCard(query, '发生错误', '未知错误, 请点击垃圾名重试', null, 'hy-card-error');
         }
 
         // Request success

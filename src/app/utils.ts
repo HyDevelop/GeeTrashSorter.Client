@@ -47,6 +47,14 @@ export class Utils
                 {
                     Utils.debug('Utils.updateBaiduApiKey():response', text);
 
+                    // Validate response
+                    // 判断是否正确
+                    if (!text.startsWith('TokenRequestSuccess:'))
+                    {
+                        Utils.debug('Utils.updateBaiduApiKey():err:dataInvalid', text);
+                        return;
+                    }
+
                     // Store in database
                     // 存入数据库
                     storage.set("baidu-api-access", text.split(":")[1]);
