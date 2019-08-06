@@ -67,3 +67,15 @@ sui-tabset div a:last-child
     width:50%;
     display: inline-block;
 }
+
+// Full screen overlay
+// 全屏覆盖消息
+.hy-fullscreen-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.76);
+}
