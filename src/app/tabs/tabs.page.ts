@@ -33,7 +33,7 @@ export class TabsPage
      * 活动实例
      */
     private static instance: TabsPage;
-    
+
     constructor(public router: Router,
                 private camera: Camera,
                 private storage: Storage,
@@ -62,7 +62,7 @@ export class TabsPage
         this.elementCameraButton = document.querySelector('#hy-camera-button');
     }
 
-    private getPicture()
+    public getPicture()
     {
         this.storage.get("baidu-api-access").then(accessToken =>
         {
