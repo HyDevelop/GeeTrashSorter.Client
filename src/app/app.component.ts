@@ -130,6 +130,15 @@ export class AppComponent
     {
         return this.instance;
     }
+
+    /**
+     * Obtain the status bar control object
+     * 获取状态栏控制对象
+     */
+    public getStatusBar()
+    {
+        return statusbar;
+    }
 }
 
 /**
