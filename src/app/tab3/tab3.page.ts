@@ -21,7 +21,7 @@ export class Tab3Page
      * Selected theme
      * 选择的主题
      */
-    private themeSelected: string;
+    private themeSelected: string = 'light';
 
     constructor(private storage: Storage,
                 private toastController: ToastController)
