@@ -38,4 +38,10 @@ export class Constants
      * 查询垃圾名历史
      */
     public static STORAGE_HISTORY = 'history';
+
+    /**
+     * Selected location
+     * 选择的地区位置
+     */
+    public static STORAGE_LOCATION = 'location';
 }
