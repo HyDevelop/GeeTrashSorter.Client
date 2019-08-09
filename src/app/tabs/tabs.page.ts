@@ -9,11 +9,6 @@ import {Tab2Page} from '../tab2/tab2.page';
 
 // TODO: Configurable camera options
 
-function debug(message)
-{
-    Utils.debug(message);
-}
-
 @Component({
     selector: 'app-tabs',
     templateUrl: 'tabs.page.html',
