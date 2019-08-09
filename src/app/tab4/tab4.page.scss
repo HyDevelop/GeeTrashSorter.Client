@@ -73,3 +73,15 @@ sui-tabset div.hy-sui-tabs
     float: right;
     margin-right: 10px;
 }
+
+.hy-about-title
+{
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ebb688+0,c7b6c1+100 */
+    background: #ebb688; /* Old browsers */
+    background: -moz-linear-gradient(left,  #ebb688 0%, #c7b6c1 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #ebb688 0%,#c7b6c1 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #ebb688 0%,#c7b6c1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebb688', endColorstr='#c7b6c1',GradientType=1 ); /* IE6-9 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
