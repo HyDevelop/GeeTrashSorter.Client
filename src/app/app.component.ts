@@ -6,6 +6,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
 import {Utils} from './utils';
 import {Storage} from '@ionic/storage';
+import {Constants} from './constants';
 
 @Component({
     selector: 'app-root',
@@ -73,6 +74,9 @@ export class AppComponent
                         Utils.updateBaiduApiKey(this.storage);
                     })
                     .catch(err => Utils.debug('AppComponent.initStorage:err1', err)); // Todo: Show errors to user
+
+                    // Store default values
+                    this.storage.set(Constants.STORAGE_LOCATION, 'shanghai');
                 })
                 .catch(err => Utils.debug('AppComponent.initStorage:err2', err));
             })
@@ -96,6 +100,7 @@ export class AppComponent
                 // 检查是否所有键存在
                 if (keys.indexOf("info") < 0) resolve(false);
                 if (keys.indexOf("baidu-api-access") < 0) resolve(false);
+                if (keys.indexOf(Constants.STORAGE_LOCATION) < 0) resolve(false);
                 resolve(true);
             });
         });
