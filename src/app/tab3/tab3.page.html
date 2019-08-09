@@ -9,4 +9,13 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-list lines="none">
+        <ion-item>
+            <ion-label>地区</ion-label>
+            <ion-select [(ngModel)]="locationSelected" (ionChange)="onLocationChange($event)">
+                <ion-select-option value="shanghai">上海</ion-select-option>
+                <ion-select-option value="beijing">北京</ion-select-option>
+            </ion-select>
+        </ion-item>
+</ion-content>
