@@ -224,28 +224,39 @@ export class Tab2Page
             target.parentNode.insertBefore(element, target.nextSibling);
         }
 
-        // Send a GET request
-        // 发送 GET 请求
-        fetch(Constants.CORS_PROXY + Constants.BASE_URL + "shanghai?name=" + text, {method: "POST"})
-        .then(respose =>
+        // Get location
+        // 获取地区
+        this.storage.get(Constants.STORAGE_LOCATION).then(location =>
         {
-            respose.text().then(responseText =>
+            // Send a GET request
+            // 发送 GET 请求
+            fetch(`${Constants.CORS_PROXY}${Constants.BASE_URL}${location}?name=${text}`, {method: "POST"})
+            .then(respose =>
             {
-                // Finish loading and process results
-                // 加载完, 处理然后显示结果
-                finishLoading(this.processHttpResponse(text, JSON.parse(responseText)));
+                respose.text().then(responseText =>
+                {
+                    // Finish loading and process results
+                    // 加载完, 处理然后显示结果
+                    finishLoading(this.processHttpResponse(text, JSON.parse(responseText)));
+                })
+                .catch(err =>
+                {
+                    finishLoading(this.createCard(text, '发生错误', '网络连接异常 (读取异常)', null, 'hy-card-error'));
+                    Utils.debug('Tab2Page.onClickHistory:err1', err);
+                });
             })
             .catch(err =>
             {
-                finishLoading(this.createCard(text, '发生错误', '网络连接异常 (读取异常)', null, 'hy-card-error'));
-                Utils.debug('Tab2Page.onClickHistory:err1', err);
+                finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error'))
+                Utils.debug('Tab2Page.onClickHistory:err2', err);
             });
         })
         .catch(err =>
         {
-            finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error'))
-            Utils.debug('Tab2Page.onClickHistory:err2', err);
+            finishLoading(this.createCard(text, '发生错误', '未设置地区', null, 'hy-card-error'))
+            Utils.debug('Tab2Page.onClickHistory:err3', err);
         });
+
     }
 
     /**
