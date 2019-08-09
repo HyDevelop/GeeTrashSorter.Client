@@ -9,6 +9,7 @@ import {Utils} from '../utils';
 // TODO: Add splash
 // TODO: Add some ng-Fx
 // TODO: Share
+// TODO: 加颜色
 
 // Html template for cards
 // 卡片模板
