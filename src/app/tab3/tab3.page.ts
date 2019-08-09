@@ -57,7 +57,7 @@ export class Tab3Page
         const toast = await this.toastController.create({
             cssClass: 'hy-toast',
             message: '保存成功! (๑>◡<๑)',
-            duration: 2000000
+            duration: 2000
         });
         await toast.present();
     }
