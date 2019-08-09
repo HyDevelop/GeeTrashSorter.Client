@@ -1,1 +1,8 @@
 
+
+// Make toast above the tab bar
+// 把提示放到标签栏上面
+.hy-toast
+{
+    transform: translateY(-60px);
+}
