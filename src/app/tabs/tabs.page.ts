@@ -28,12 +28,18 @@ export class TabsPage
      */
     private syncedCurrentTab: string = "tab1";
 
+    /**
+     * Active instance
+     * 活动实例
+     */
+    private static instance: TabsPage;
+    
     constructor(public router: Router,
                 private camera: Camera,
                 private storage: Storage,
                 private actionSheetController: ActionSheetController)
     {
-        // Constructs itself, good job!
+        TabsPage.instance = this;
     }
 
     /**
@@ -166,5 +172,14 @@ export class TabsPage
             buttons: buttons
         });
         await actionSheet.present();
+    }
+
+    /**
+     * Get active instance
+     * 获取活动实例
+     */
+    public static getInstance()
+    {
+        return TabsPage.instance;
     }
 }
