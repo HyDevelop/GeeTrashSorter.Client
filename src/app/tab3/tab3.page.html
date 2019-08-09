@@ -18,4 +18,19 @@
                 <ion-select-option value="beijing">北京</ion-select-option>
             </ion-select>
         </ion-item>
+        <ion-item>
+            <ion-label>颜色主题</ion-label>
+            <ion-select [(ngModel)]="themeSelected" (ionChange)="onThemeChange($event)">
+                <ion-select-option value="light">白色</ion-select-option>
+                <ion-select-option value="light">白色</ion-select-option>
+                <ion-select-option value="light">白色</ion-select-option>
+                <ion-select-option value="light">白色</ion-select-option>
+                <ion-select-option value="light">( ͡° ͜ʖ ͡°)</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>这是个没用的开关w</ion-label>
+            <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+    </ion-list>
 </ion-content>
