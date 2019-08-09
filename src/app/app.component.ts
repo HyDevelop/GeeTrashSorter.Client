@@ -13,6 +13,12 @@ import {Storage} from '@ionic/storage';
 })
 export class AppComponent
 {
+    /**
+     * Keep the active instance
+     * 活动实例
+     */
+    private static instance;
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -21,6 +27,7 @@ export class AppComponent
         private uniqueDeviceID: UniqueDeviceID
     )
     {
+        AppComponent.instance = this;
         this.initStorage();
         this.initApp();
     }
@@ -113,6 +120,15 @@ export class AppComponent
 
             this.splashScreen.hide();
         });
+    }
+
+    /**
+     * Obtain the active instance
+     * 获取活动实例
+     */
+    public static getInstance()
+    {
+        return this.instance;
     }
 }
 
