@@ -11,9 +11,9 @@ import {SuiModule} from 'ng2-semantic-ui';
         IonicModule,
         CommonModule,
         FormsModule,
-        RouterModule.forChild([{path: '', component: Tab3Page}]),
-        SuiModule
+        RouterModule.forChild([{path: '', component: Tab3Page}])
     ],
+    providers: [Storage],
     declarations: [Tab3Page]
 })
 export class Tab3PageModule
