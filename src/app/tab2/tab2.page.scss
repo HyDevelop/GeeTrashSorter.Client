@@ -14,3 +14,10 @@ ion-spinner.hy-card-spinner
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+// Add some rounded corners to material design search bar
+// 让安卓端的搜索框变得更圆
+.sc-ion-searchbar-md
+{
+    border-radius: 20px;
+}
