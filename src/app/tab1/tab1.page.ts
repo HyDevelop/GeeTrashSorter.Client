@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import {TabsPage} from '../tabs/tabs.page';
+
+// TODO: Implement 提出意见
 
 @Component({
     selector: 'app-tab1',
@@ -7,9 +10,13 @@ import {Component} from '@angular/core';
 })
 export class Tab1Page
 {
-
     constructor()
     {
+
     }
 
+    irClick()
+    {
+        TabsPage.getInstance().getPicture();
+    }
 }
