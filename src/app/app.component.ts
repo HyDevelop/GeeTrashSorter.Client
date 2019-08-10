@@ -37,7 +37,13 @@ export class AppComponent
         // 等待页面加载完
         pWaitFor(() => document.querySelector('#hy-loading') != null).then(() =>
         {
-            this.initStorage();
+            pWaitFor(() => document.querySelector('ion-router-outlet') != null).then(() =>
+            {
+                this.showLoading(true);
+
+                this.initStorage();
+                this.initFailed("");
+            });
         });
     }
 
