@@ -99,6 +99,26 @@ export class AppComponent
     }
 
     /**
+     * Show a failed loading screen
+     * 加载失败
+     *
+     * @param message Error message
+     */
+    private initFailed(message: string)
+    {
+        // Make loading screen red
+        // 把加载页变红
+        $('#hy-loading').css('background-color', '#b925257a');
+
+        // Hide loading spinner
+        // 隐藏加载圈
+        $('#hy-loading ion-spinner').hide();
+
+        // Change text
+        // 改文字
+        $('#hy-loading-text').html("初始化失败了! ;-;<br>请退出重试...<br>或者看看有没有更新什么的w<br>错误信息:" + message);
+    }
+    /**
      * Verify if storage is valid
      * 验证数据库是否完整
      */
