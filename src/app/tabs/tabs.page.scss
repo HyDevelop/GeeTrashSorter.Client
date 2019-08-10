@@ -2,14 +2,13 @@
 
 // Image recognition button
 // 图像识别按钮
-#hy-camera-button
+.hy-button-card
 {
     margin: 0 10px 15px;
     border-radius: 25px;
-    box-shadow: 0 0 16px 2px rgba(81, 140, 255, 0.62);
 }
 
-#hy-camera-button-text
+.hy-button-card div
 {
     width: 100%;
     text-align: center;
