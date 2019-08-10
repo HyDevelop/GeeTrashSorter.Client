@@ -103,8 +103,9 @@ export class AppComponent
      * 加载失败
      *
      * @param message Error message
+     * @param detail More detailed error message
      */
-    private initFailed(message: string)
+    private initFailed(message: string, detail?: string)
     {
         // Make loading screen red
         // 把加载页变红
@@ -114,9 +115,15 @@ export class AppComponent
         // 隐藏加载圈
         $('#hy-loading ion-spinner').hide();
 
+        // Create text
+        // 创建文字
+        let text = '初始化失败了! ;-;<br>请退出重试...<br>或者看看有没有更新什么的w<br>';
+        if (message != null) text += `<br>错误原因: ${message}<br>`;
+        if (detail != null) text += `<br><div style="font-size: smaller">详细报错原因: ${detail}</div>`
+
         // Change text
         // 改文字
-        $('#hy-loading-text').html("初始化失败了! ;-;<br>请退出重试...<br>或者看看有没有更新什么的w<br>错误信息:" + message);
+        $('#hy-loading-text').html();
     }
 
     /**
