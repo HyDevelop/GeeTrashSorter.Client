@@ -107,7 +107,11 @@ export class AppComponent
             })
             .catch(err =>
             {
-                if (err == 'cordova_not_available') return;
+                if (err == 'cordova_not_available')
+                {
+                    this.showLoading(false);
+                    return;
+                }
                 Utils.debug('AppComponent.initStorage:err3', err);
                 this.initFailed('获取 UUID 失败,<br>可能是缺少权限.', err);
             });
