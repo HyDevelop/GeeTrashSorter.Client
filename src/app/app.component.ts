@@ -20,6 +20,12 @@ export class AppComponent
      */
     private static instance;
 
+    /**
+     * Loading screen overlay element
+     * 加载界面
+     */
+    private elementLoading;
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
