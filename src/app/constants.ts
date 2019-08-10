@@ -10,7 +10,7 @@ export class Constants
      * Debug or not
      * 是否输出测试信息
      */
-    public static DEBUG = true;
+    public static DEBUG = false;
 
     /**
      * API Base URL
