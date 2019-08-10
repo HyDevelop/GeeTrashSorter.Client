@@ -123,7 +123,7 @@ export class AppComponent
 
         // Change text
         // 改文字
-        $('#hy-loading-text').html();
+        $('#hy-loading-text').html(text);
     }
 
     /**
