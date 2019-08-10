@@ -22,12 +22,6 @@ export class AppComponent
      */
     private static instance;
 
-    /**
-     * Loading screen overlay element
-     * 加载界面
-     */
-    private elementLoading;
-
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -41,7 +35,7 @@ export class AppComponent
 
         // Wait for page to load
         // 等待页面加载完
-        pWaitFor(() => this.elementLoading = document.querySelector('#hy-loading') != null).then(() =>
+        pWaitFor(() => document.querySelector('#hy-loading') != null).then(() =>
         {
             this.initStorage();
         });
