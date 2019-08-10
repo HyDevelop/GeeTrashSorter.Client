@@ -36,18 +36,7 @@ sui-tabset div.hy-sui-tabs
 // 版本号
 #hy-about-version
 {
-    padding-bottom: 15px;
-}
-
-#hy-about-gts-logo
-{
-    height: 400px;
-    box-shadow: 0 0 6px 2px black;
-}
-
-#hy-about-gts-logo h2
-{
-    padding-top: 50%;
+    padding-bottom: 15px !important;
 }
 
 .hy-about-avatar
@@ -77,15 +66,11 @@ sui-tabset div.hy-sui-tabs
 .hy-about-title
 {
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ebb688+0,c7b6c1+100 */
-    background: #ebb688; /* Old browsers */
-    background: -moz-linear-gradient(left,  #ebb688 0%, #c7b6c1 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  #ebb688 0%,#c7b6c1 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  #ebb688 0%,#c7b6c1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebb688', endColorstr='#c7b6c1',GradientType=1 ); /* IE6-9 */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: linear-gradient(to right,  #ebb688 0%,#c7b6c1 100%)  !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 
-    text-shadow: 0 0 6px #ffcdcc75;
+    text-shadow: 0 0 6px #ffcdcc75 !important;
 }
 
 .native-textarea
