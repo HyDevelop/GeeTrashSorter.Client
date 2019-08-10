@@ -149,6 +149,10 @@ export class AppComponent
                     // Store in database
                     // 存入数据库
                     this.storage.set("baidu-api-access", text.split(":")[1]);
+
+                    // Success!
+                    // 成功!
+                    this.showLoading(false);
                 })
                 .catch(err =>
                 {
