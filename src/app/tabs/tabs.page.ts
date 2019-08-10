@@ -182,4 +182,23 @@ export class TabsPage
     {
         return TabsPage.instance;
     }
+
+    /**
+     * Is tab2page search bar active
+     * 用户是否在使用第二页的搜索栏
+     */
+    private isSearchActive()
+    {
+        if (Tab2Page.instance == null) return false;
+        return Tab2Page.instance.syncedSearchFocused;
+    }
+
+    /**
+     * Search
+     * 搜索
+     */
+    private search()
+    {
+        Tab2Page.instance.onSearchBarEnter();
+    }
 }
