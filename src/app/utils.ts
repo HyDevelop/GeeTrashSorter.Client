@@ -22,51 +22,6 @@ export class Utils
     }
 
     /**
-     * Update baidu api access token
-     * 更新百度 API 访问
-     *
-     * @param storage 存储
-     */
-    public static updateBaiduApiKey(storage: Storage)
-    {
-        // Get device info
-        // 获取设备信息
-        storage.get("info").then(infoString =>
-        {
-            let info: DeviceInfo = JSON.parse(infoString);
-
-            // Fetch http request
-            // 获取请求
-            fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST",
-                headers: {"udid": info.udid, "platform": info.platform, "width": "" + info.width, "height": "" + info.height}})
-            .then(response =>
-            {
-                // Get response text
-                // 获取回复的文字
-                response.text().then(text =>
-                {
-                    Utils.debug('Utils.updateBaiduApiKey():response', text);
-
-                    // Validate response
-                    // 判断是否正确
-                    if (!text.startsWith('TokenRequestSuccess:'))
-                    {
-                        Utils.debug('Utils.updateBaiduApiKey():err:dataInvalid', text);
-                        return;
-                    }
-
-                    // Store in database
-                    // 存入数据库
-                    storage.set("baidu-api-access", text.split(":")[1]);
-                })
-                .catch(err => Utils.debug('Utils.updateBaiduApiKey():err1', err)); // Todo: Show errors to user
-            })
-            .catch(err => Utils.debug('Utils.updateBaiduApiKey():err2', err));
-        })
-        .catch(err => Utils.debug('Utils.updateBaiduApiKey():err3', err));
-    }
-
-    /**
      * Generate form body string from class.
      * 从信息类生成表单 body 字符串.
      *

@@ -42,7 +42,6 @@ export class AppComponent
                 this.showLoading(true);
 
                 this.initStorage();
-                this.initFailed("");
             });
         });
     }
@@ -58,7 +57,11 @@ export class AppComponent
         // TODO: Better error handling
         this.storageValid().then(valid =>
         {
-            if (valid) return;
+            if (valid)
+            {
+                this.showLoading(false);
+                return;
+            }
 
             // Create variable
             // 创建变量
@@ -85,16 +88,84 @@ export class AppComponent
                     {
                         // Update Baidu api
                         // 初始化百度 API
-                        Utils.updateBaiduApiKey(this.storage);
+                        this.updateBaiduApiKey();
                     })
-                    .catch(err => Utils.debug('AppComponent.initStorage:err1', err)); // Todo: Show errors to user
+                    .catch(err =>
+                    {
+                        Utils.debug('AppComponent.initStorage:err1', err);
+                        this.initFailed('存储返回值失败,<br>可能是没有数据存储权限.', err);
+                    });
 
                     // Store default values
                     this.storage.set(Constants.STORAGE_LOCATION, 'shanghai');
                 })
-                .catch(err => Utils.debug('AppComponent.initStorage:err2', err));
+                .catch(err =>
+                {
+                    Utils.debug('AppComponent.initStorage:err2', err);
+                    this.initFailed('设备准备状态错误. (未知)', err);
+                });
             })
-            .catch(err => Utils.debug('AppComponent.initStorage:err3', err));
+            .catch(err =>
+            {
+                Utils.debug('AppComponent.initStorage:err3', err);
+                this.initFailed('获取 UUID 失败,<br>可能是缺少权限.', err);
+            });
+        });
+    }
+
+    /**
+     * Update baidu api access token
+     * 更新百度 API 访问
+     */
+    public updateBaiduApiKey()
+    {
+        // Get device info
+        // 获取设备信息
+        this.storage.get("info").then(infoString =>
+        {
+            let info: DeviceInfo = JSON.parse(infoString);
+
+            // Fetch http request
+            // 获取请求
+            fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST",
+                headers: {"udid": info.udid, "platform": info.platform, "width": "" + info.width, "height": "" + info.height}})
+            .then(response =>
+            {
+                // Get response text
+                // 获取回复的文字
+                response.text().then(text =>
+                {
+                    Utils.debug('Utils.updateBaiduApiKey():response', text);
+
+                    // Validate response
+                    // 判断是否正确
+                    if (!text.startsWith('TokenRequestSuccess:'))
+                    {
+                        Utils.debug('Utils.updateBaiduApiKey():err:dataInvalid', text);
+                        this.initFailed('获取访问码报错,<br>大概是网络问题,<br>重试一遍吧w!', text);
+                        return;
+                    }
+
+                    // Store in database
+                    // 存入数据库
+                    this.storage.set("baidu-api-access", text.split(":")[1]);
+                })
+                .catch(err =>
+                {
+                    Utils.debug('Utils.updateBaiduApiKey():err1', err);
+                    this.initFailed('转码到文字失败. (未知)', err);
+                });
+            })
+            .catch(err =>
+            {
+                Utils.debug('Utils.updateBaiduApiKey():err2', err);
+                this.initFailed('获取访问码失败,<br>大概是网络问题或者没有更新.<br>(或者是我的服务器宕了)<br>;-;', err);
+            });
+        })
+        .catch(err =>
+        {
+            Utils.debug('Utils.updateBaiduApiKey():err3', err);
+            this.initFailed('读取存储失败.', err);
         });
     }
 
@@ -117,9 +188,9 @@ export class AppComponent
 
         // Create text
         // 创建文字
-        let text = '初始化失败了! ;-;<br>请退出重试...<br>或者看看有没有更新什么的w<br>';
+        let text = '初始化失败了 ;-;<br>请退出重试,<br>或者看看有没有更新什么的w<br>';
         if (message != null) text += `<br>错误原因: ${message}<br>`;
-        if (detail != null) text += `<br><div style="font-size: smaller">详细报错原因: ${detail}</div>`
+        if (detail != null) text += `<br><div style="font-size: 10px; color: lightcyan">详细报错原因: ${detail}</div>`
 
         // Change text
         // 改文字
