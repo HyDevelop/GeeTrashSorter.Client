@@ -36,13 +36,13 @@ export class AppComponent
     )
     {
         AppComponent.instance = this;
+        this.initApp();
 
         // Wait for page to load
         // 等待页面加载完
         pWaitFor(() => this.elementLoading = document.querySelector('#hy-loading') != null).then(() =>
         {
             this.initStorage();
-            this.initApp();
         });
     }
 
