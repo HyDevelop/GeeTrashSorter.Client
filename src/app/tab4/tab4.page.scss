@@ -4,32 +4,32 @@ sui-tabset div.hy-sui-tabs
 {
     // Remove tab block borders
     // 移除标签栏外框
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
 
     // Colorize it
     // 染色
-    background-color: #fafeff;
+    background-color: #fafeff !important;
 
-    box-shadow: 0 1px 9px 0 rgb(250, 254, 255);;
+    box-shadow: 0 1px 9px 0 rgb(250, 254, 255) !important;
 }
 
 // Remove individual tab borders
 // 移除标签外框
 .ui.menu.hy-sui-tabs .item:before
 {
-    width: 0;
+    width: 0 !important;
 }
 
 // Remove borders from tab contents
 // 移除标签页内容外框
 .hy-sui-tab-content
 {
-    border: none;
-    box-shadow: none;
-    height: 100%;
-    text-align: center;
+    border: none !important;
+    box-shadow: none !important;
+    height: 100% !important;
+    text-align: center !important;
 }
 
 // Version text
@@ -86,4 +86,10 @@ sui-tabset div.hy-sui-tabs
     -webkit-text-fill-color: transparent;
 
     text-shadow: 0 0 6px #ffcdcc75;
+}
+
+.native-textarea
+{
+    min-height: 90px !important;
+    padding-right: var(--padding-start) !important;
 }
