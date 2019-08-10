@@ -65,7 +65,7 @@ export class Tab2Page
      * Is the search focused (Synced read, manual update)
      * 用户是否在搜索框上 (动态读取, 手动更新)
      */
-    private syncedSearchFocused: boolean;
+    public syncedSearchFocused: boolean;
 
     public constructor(
         private storage: Storage,
