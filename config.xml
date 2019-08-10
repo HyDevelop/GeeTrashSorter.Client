@@ -110,5 +110,5 @@
     <plugin name="cordova-plugin-navigationbar-color" spec="0.0.9" />
     <engine name="ios" spec="5.0.1" />
     <engine name="browser" spec="^6.0.0" />
-    <engine name="android" spec="^8.0.0" />
+    <engine name="android" spec="^7.1.4" />
 </widget>
