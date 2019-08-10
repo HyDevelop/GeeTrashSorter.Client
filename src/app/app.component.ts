@@ -118,6 +118,27 @@ export class AppComponent
         // 改文字
         $('#hy-loading-text').html("初始化失败了! ;-;<br>请退出重试...<br>或者看看有没有更新什么的w<br>错误信息:" + message);
     }
+
+    /**
+     * Toggle the show state of the loading screen
+     * 开/关加载界面
+     *
+     * @param shown Shown or not
+     */
+    private showLoading(shown: boolean)
+    {
+        if (shown)
+        {
+            $('#hy-loading').show();
+            $('ion-router-outlet').css("filter", "blur(8px)");
+        }
+        else
+        {
+            $('#hy-loading').hide();
+            $('ion-router-outlet').css("filter", "none");
+        }
+    }
+
     /**
      * Verify if storage is valid
      * 验证数据库是否完整
