@@ -7,6 +7,7 @@ import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
 import {Utils} from './utils';
 import {Storage} from '@ionic/storage';
 import {Constants} from './constants';
+import * as pWaitFor from 'p-wait-for';
 
 @Component({
     selector: 'app-root',
@@ -35,8 +36,14 @@ export class AppComponent
     )
     {
         AppComponent.instance = this;
-        this.initStorage();
-        this.initApp();
+
+        // Wait for page to load
+        // 等待页面加载完
+        pWaitFor(() => this.elementLoading = document.querySelector('#hy-loading') != null).then(() =>
+        {
+            this.initStorage();
+            this.initApp();
+        });
     }
 
     /**
