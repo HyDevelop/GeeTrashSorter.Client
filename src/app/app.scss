@@ -85,6 +85,18 @@ sui-tabset div a:last-child
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.76);
+
+    // Center items
+    // 子物品居中
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div
+    {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 // Separator line
