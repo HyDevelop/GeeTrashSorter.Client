@@ -8,6 +8,7 @@ import {Utils} from './utils';
 import {Storage} from '@ionic/storage';
 import {Constants} from './constants';
 import * as pWaitFor from 'p-wait-for';
+import * as $ from 'jquery'
 
 @Component({
     selector: 'app-root',
