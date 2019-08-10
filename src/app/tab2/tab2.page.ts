@@ -10,6 +10,7 @@ import {Utils} from '../utils';
 // TODO: Add some ng-Fx
 // TODO: Share
 // TODO: 加颜色
+// TODO: Clickable links
 
 // Html template for cards
 // 卡片模板
@@ -83,7 +84,7 @@ export class Tab2Page
             // 初始化数值
             if (value == null)
             {
-                storage.set(Constants.STORAGE_HISTORY, value = ['芒果干', '湿纸巾', '电池']);
+                storage.set(Constants.STORAGE_HISTORY, value = ['猫', '芒果干', '湿纸巾', '电池']);
             }
 
             // Assign result to the displaying array of ngFor
