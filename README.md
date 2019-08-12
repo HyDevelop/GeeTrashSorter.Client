@@ -20,8 +20,20 @@
   <br>
 </h1>
 
+## (这个项目仍在开发中, 懒得认真写 Readme 了 /w/)
 
+<br>
 
+<a name="screenshots"></a>
+应用截图
+--------
+
+<details><summary>点击这里展开w</summary>
+  
+<img src="./screenshots/Screenshot_2019-08-10-21-04-00-985_io.ionic.start.jpg" width="300"/>
+<img src="./screenshots/Screenshot_2019-08-10-21-04-15-472_io.ionic.start.jpg" width="300"/>
+<img src="./screenshots/Screenshot_2019-08-10-21-04-23-165_io.ionic.start.jpg" width="300"/>
+</details>
 
 
 <br>
