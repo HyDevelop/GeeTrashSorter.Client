@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {Platform} from '@ionic/angular';
+import {AlertController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
@@ -9,6 +9,7 @@ import {Storage} from '@ionic/storage';
 import {Constants} from './constants';
 import * as pWaitFor from 'p-wait-for';
 import * as $ from 'jquery'
+import {Keyboard} from '@ionic-native/keyboard/ngx';
 
 @Component({
     selector: 'app-root',
@@ -23,11 +24,13 @@ export class AppComponent
     private static instance;
 
     constructor(
-        private platform: Platform,
+        public platform: Platform,
+        public keyboard: Keyboard,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private storage: Storage,
-        private uniqueDeviceID: UniqueDeviceID
+        private uniqueDeviceID: UniqueDeviceID,
+        private alertController: AlertController
     )
     {
         AppComponent.instance = this;
@@ -256,6 +259,8 @@ export class AppComponent
     {
         this.platform.ready().then(() =>
         {
+            this.registerBackButton();
+
             this.statusBar.styleDefault();
 
             // Fix black status bar
@@ -285,6 +290,18 @@ export class AppComponent
     public getStatusBar()
     {
         return statusbar;
+    }
+
+    /**
+     * Quit app when the back button is clicked
+     * 返回键退出
+     */
+    private registerBackButton()
+    {
+        this.platform.backButton.subscribe(() =>
+        {
+            navigator['app'].exitApp();
+        });
     }
 }
 

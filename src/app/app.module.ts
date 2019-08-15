@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
-import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {AlertController, IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AppRoutingModule} from './app-routing.module';
@@ -10,6 +10,7 @@ import {Camera} from '@ionic-native/camera/ngx';
 import {Base64ToGallery} from '@ionic-native/base64-to-gallery/ngx';
 import {IonicStorageModule} from '@ionic/storage';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
+import {Keyboard} from '@ionic-native/keyboard/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -27,7 +28,9 @@ import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
         IonicStorageModule,
         Camera,
         Base64ToGallery,
-        UniqueDeviceID
+        UniqueDeviceID,
+        Keyboard,
+        AlertController
     ],
     bootstrap: [AppComponent]
 })

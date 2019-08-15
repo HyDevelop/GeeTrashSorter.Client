@@ -85,4 +85,15 @@ export class Utils
 
         return results;
     }
+
+    /**
+     * Run something after some milliseconds
+     * 在多少毫秒之后执行代码
+     *
+     * @param ms Milliseconds
+     */
+    public static delay(ms: number)
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 }

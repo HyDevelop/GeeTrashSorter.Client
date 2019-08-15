@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.hydev.geetrashsorter" version="2.33" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.hydev.geetrashsorter" version="2.333" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>极分类</name>
     <description>识图垃圾分类助手</description>
     <author email="admin@moecraft.cc" href="http://hydev.org/">HyDEV 开发组</author>
@@ -106,10 +106,10 @@
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-navigationbar-color" spec="0.0.9" />
     <allow-navigation href="http://localhost:8100" sessionid="ec00fd5e" />
     <engine name="ios" spec="5.0.1" />
     <engine name="browser" spec="^6.0.0" />
     <engine name="android" spec="^7.1.4" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
 </widget>

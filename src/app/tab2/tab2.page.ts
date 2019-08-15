@@ -135,6 +135,10 @@ export class Tab2Page
         // 获取输入内容
         let query = this.syncedSearchText.toLowerCase();
 
+        // Ignore empty
+        // 忽略空
+        if (query == null || query == "") return;
+
         // Record
         // 记录
         this.recordQuery(query);
@@ -143,9 +147,14 @@ export class Tab2Page
         // 等 ngFor 更新
         pWaitFor(() => document.getElementById('hy-history-item-' + query) == null).then(() =>
         {
-            // Search
-            // 查询
-            this.onClickHistory(query);
+            // Delay 100 ms
+            // 等 100 ms
+            Utils.delay(100).then(() =>
+            {
+                // Search
+                // 查询
+                this.onClickHistory(query);
+            });
         });
     }
 
@@ -383,6 +392,7 @@ export class Tab2Page
         const actionSheet = await this.actionSheetController.create(
         {
             header: '操作',
+            mode: 'md',
             buttons: [
                 {
                     text: '关闭卡片',

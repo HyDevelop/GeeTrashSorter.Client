@@ -6,6 +6,7 @@ import {Utils} from '../utils';
 import {Constants} from '../constants';
 import {ActionSheetController} from '@ionic/angular';
 import {Tab2Page} from '../tab2/tab2.page';
+import {AppComponent} from '../app.component';
 
 // TODO: Configurable camera options
 
@@ -33,6 +34,9 @@ export class TabsPage
      * 活动实例
      */
     private static instance: TabsPage;
+
+
+    private backButtonSubscription;
 
     constructor(public router: Router,
                 private camera: Camera,
@@ -127,7 +131,7 @@ export class TabsPage
             },
             err =>
             {
-                alert(err);
+                // alert(err);
 
                 // TODO: Properly handle error
             })
@@ -190,6 +194,7 @@ export class TabsPage
     private isSearchActive()
     {
         if (Tab2Page.instance == null) return false;
+        if (!AppComponent.getInstance().keyboard.isVisible) return false;
         return Tab2Page.instance.syncedSearchFocused;
     }
 
@@ -199,6 +204,7 @@ export class TabsPage
      */
     private search()
     {
+        alert("Search!");
         Tab2Page.instance.onSearchBarEnter();
     }
 }
