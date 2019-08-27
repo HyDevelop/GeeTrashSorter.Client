@@ -11,6 +11,7 @@ import {Base64ToGallery} from '@ionic-native/base64-to-gallery/ngx';
 import {IonicStorageModule} from '@ionic/storage';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
 import {Keyboard} from '@ionic-native/keyboard/ngx';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -30,7 +31,8 @@ import {Keyboard} from '@ionic-native/keyboard/ngx';
         Base64ToGallery,
         UniqueDeviceID,
         Keyboard,
-        AlertController
+        AlertController,
+        ScreenOrientation
     ],
     bootstrap: [AppComponent]
 })
