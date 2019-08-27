@@ -240,7 +240,7 @@ export class Tab2Page
         {
             // Send a GET request
             // 发送 GET 请求
-            fetch(`${Constants.CORS_PROXY}${Constants.BASE_URL}${location}?name=${text}`, {method: "POST"})
+            fetch(`${Constants.BASE_URL}${location}?name=${text}`, {method: "POST"})
             .then(respose =>
             {
                 respose.text().then(responseText =>
