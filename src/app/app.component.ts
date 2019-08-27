@@ -118,7 +118,7 @@ export class AppComponent
                     return;
                 }
                 Utils.debug('AppComponent.initStorage:err3', err);
-                this.initFailed('获取 UUID 失败,<br>可能是缺少权限.', err);
+                this.initFailed('缺少权限<br>请退出应用重试.', err);
             });
         });
     }
