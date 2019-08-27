@@ -1,7 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Storage} from '@ionic/storage';
 import pWaitFor from 'p-wait-for';
-import {ActionSheetController} from '@ionic/angular';
+import {ActionSheetController, IonContent} from '@ionic/angular';
 import {Clipboard} from '@ionic-native/clipboard/ngx';
 import {Constants} from '../constants';
 import {Utils} from '../utils';
@@ -31,6 +31,8 @@ const CARD_LOADING = '<ion-card><ion-spinner name=\'crescent\' class=\'hy-card-s
 })
 export class Tab2Page
 {
+    @ViewChild('pageTop') pageTop: IonContent;
+
     /**
      * This instance
      * 这个实例
@@ -151,6 +153,10 @@ export class Tab2Page
             // 等 100 ms
             Utils.delay(100).then(() =>
             {
+                // Scroll to top
+                // 滚到最上面
+                this.pageTop.scrollToTop();
+
                 // Search
                 // 查询
                 this.onClickHistory(query);
@@ -257,13 +263,13 @@ export class Tab2Page
             })
             .catch(err =>
             {
-                finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error'))
+                finishLoading(this.createCard(text, '发生错误', '网络连接异常', null, 'hy-card-error'));
                 Utils.debug('Tab2Page.onClickHistory:err2', err);
             });
         })
         .catch(err =>
         {
-            finishLoading(this.createCard(text, '发生错误', '未设置地区', null, 'hy-card-error'))
+            finishLoading(this.createCard(text, '发生错误', '未设置地区', null, 'hy-card-error'));
             Utils.debug('Tab2Page.onClickHistory:err3', err);
         });
 

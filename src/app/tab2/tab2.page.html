@@ -20,7 +20,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content #pageTop>
     <ion-list id="hy-item-list" lines="none">
         <ion-item *ngIf="syncedSearchText != '' &&
                          syncedItemListArray.indexOf(syncedSearchText) == -1"
