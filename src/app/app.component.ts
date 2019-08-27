@@ -142,6 +142,7 @@ export class AppComponent
                     platform: info.platform,
                     width: "" + info.width,
                     height: "" + info.height,
+                    version: Constants.INNER_VERSION
                 })
             })
             .then(response =>
