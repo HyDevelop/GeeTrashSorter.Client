@@ -277,7 +277,8 @@ export class AppComponent
             if(this.platform.is('android'))
             {
                 // set status bar to white
-                this.statusBar.backgroundColorByHexString('#ffe5e6');
+                // this.statusBar.backgroundColorByHexString('#ffe5e6');
+                this.statusBar.backgroundColorByHexString('#f2f2f2');
             }
 
             // Lock the orientation to landscape
