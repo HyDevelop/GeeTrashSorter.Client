@@ -30,6 +30,12 @@ export class Constants
      */
     public static IR_MIN_SCORE = 0.09;
 
+    /**
+     * Version
+     * 内部版本号
+     */
+    public static INNER_VERSION = '0.1.0.405';
+
     // Storage key constant
     // 数据库键名
 
