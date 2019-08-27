@@ -34,7 +34,7 @@ export class Constants
      * Version
      * 内部版本号
      */
-    public static INNER_VERSION = '3.1.2.416';
+    public static INNER_VERSION = '3.1.4.422';
 
     // Storage key constant
     // 数据库键名
