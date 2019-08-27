@@ -135,8 +135,15 @@ export class AppComponent
 
             // Fetch http request
             // 获取请求
-            fetch(Constants.CORS_PROXY + Constants.BASE_URL + "baidu-api-access", {method: "POST",
-                headers: {"udid": info.udid, "platform": info.platform, "width": "" + info.width, "height": "" + info.height}})
+            fetch(Constants.BASE_URL + "baidu-api-access", {method: "POST",
+                body: JSON.stringify(
+                {
+                    udid: info.udid,
+                    platform: info.platform,
+                    width: "" + info.width,
+                    height: "" + info.height,
+                })
+            })
             .then(response =>
             {
                 // Get response text
