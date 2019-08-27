@@ -10,6 +10,7 @@ import {Constants} from './constants';
 import * as pWaitFor from 'p-wait-for';
 import * as $ from 'jquery'
 import {Keyboard} from '@ionic-native/keyboard/ngx';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 @Component({
     selector: 'app-root',
@@ -30,7 +31,8 @@ export class AppComponent
         private statusBar: StatusBar,
         private storage: Storage,
         private uniqueDeviceID: UniqueDeviceID,
-        private alertController: AlertController
+        private alertController: AlertController,
+        private screenOrientation: ScreenOrientation
     )
     {
         AppComponent.instance = this;
@@ -277,6 +279,10 @@ export class AppComponent
                 // set status bar to white
                 this.statusBar.backgroundColorByHexString('#ffe5e6');
             }
+
+            // Lock the orientation to landscape
+            // 方向锁定
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
             this.splashScreen.hide();
         });
